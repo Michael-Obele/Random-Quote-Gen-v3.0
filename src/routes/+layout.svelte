@@ -86,7 +86,8 @@
           </div>
         </div>
       </div>
-      <div
+      <!-- Bell Icon -->
+      <!-- <div
         class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
       >
         <button
@@ -110,7 +111,7 @@
             />
           </svg>
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -139,23 +140,3 @@
 <!-- End of Nav Bar -->
 
 <slot />
-
-<style>
-  .navbar {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .navbar a {
-    text-decoration: none;
-    font-size: 16px;
-  }
-
-  .navbar a:hover {
-    color: #f00;
-  }
-</style>
