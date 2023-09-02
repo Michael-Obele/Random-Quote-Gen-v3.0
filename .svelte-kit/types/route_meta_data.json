@@ -1,9 +1,5 @@
 {
-	"/": [
-		"src/routes/+page.server.js"
-	],
+	"/": [],
 	"/About": [],
-	"/Random-Quotes": [],
-	"/Random-Quote": [],
-	"/pages/page1": []
+	"/Random-Quotes": []
 }
