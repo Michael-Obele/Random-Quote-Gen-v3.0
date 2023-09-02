@@ -1,4 +1,5 @@
 <script>
+  import { colors } from '../store';
   let url = 'https://api.quotable.io/random';
 
   let promise = getRandomQuote();

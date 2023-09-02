@@ -1,6 +1,34 @@
 <script>
   import '../app.css';
   import Logo from '../Logo.svelte';
+  import { spring } from 'svelte/motion';
+  import { background, colors, LightColors, DarkColors } from '../store';
+
+  let isAnimated = false;
+  let rotation = 0;
+  let scale = 1;
+
+  let counter = 0;
+
+  console.log('background = ', $background);
+  function handleClick() {
+    counter = (counter + 1) % colors.length;
+    isAnimated = true;
+    rotation = 45;
+    scale = 1.2;
+
+    // Reset the animation after a delay
+    setTimeout(() => {
+      background.set(DarkColors[counter]);
+      isAnimated = false;
+      rotation = 0;
+      scale = 1;
+    }, 500);
+  }
+
+  // Create spring animations
+  $: animatedRotation = spring(rotation, { stiffness: 0.1, damping: 0.7 });
+  $: animatedScale = spring(scale, { stiffness: 0.1, damping: 0.7 });
 
   const navBarItems = ['Random-Quote', 'Random-Quotes', 'About'];
 
@@ -18,9 +46,18 @@
   <div
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
   >
+    <!-- svelte-ignore a11y-invalid-attribute -->
     <a href="#" class="flex items-center">
       <Logo />
     </a>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div class="flex md:order-3" on:click={handleClick}>
+      <i
+        class="fa-solid fa-fill-drip fa-2x"
+        style="transform: rotate({$animatedRotation}deg) scale({$animatedScale});"
+      />
+    </div>
     <div class="flex md:order-2">
       <button
         on:click={openMenu}
@@ -31,21 +68,7 @@
         aria-expanded="false"
       >
         <span class="sr-only">Open main menu</span>
-        <svg
-          class="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 17 14"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15"
-          />
-        </svg>
+        <i class="fa-solid fa-bars" />
       </button>
     </div>
     <div
@@ -81,3 +104,10 @@
 </nav>
 
 <!-- End of Nav Bar -->
+
+<style>
+  .fa-fill-drip {
+    transition: transform 0.5s cubic-bezier(0.42, 0, 0.58, 1);
+    transform-origin: bottom;
+  }
+</style>
