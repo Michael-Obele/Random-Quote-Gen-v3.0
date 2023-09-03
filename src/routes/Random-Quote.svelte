@@ -1,6 +1,10 @@
 <script>
   import { background } from '../store';
+
   let url = 'https://api.quotable.io/random';
+  let dropState = false;
+  let textToCopy = '';
+  let Copy = 'Copy';
 
   let promise = getRandomQuote();
 
@@ -12,12 +16,25 @@
       minute: 'numeric',
       hour12: true,
     });
+    textToCopy = `${text.author} - ${text.content}`;
     text.time = time;
     return text;
   }
 
   function generateQuote() {
     promise = getRandomQuote();
+  }
+
+  const dropDown = () => {
+    dropState = !dropState;
+  };
+
+  function copyToClipboard() {
+    Copy = 'Copied';
+    navigator.clipboard.writeText(textToCopy);
+    setTimeout(() => {
+      Copy = 'Copy';
+    }, 1200);
   }
 </script>
 
@@ -86,7 +103,7 @@
         <!-- Button -->
         <div class="generate text-black text-center mx-auto py-2">
           <button
-            class="max-h-[15vh] max-w-[90%] text-[2vw] px-[1vw] bg-amber-400 rounded-lg"
+            class="max-h-[15vh] max-w-[70vw] px-[1vw] bg-amber-400 rounded-lg cursor-wait"
             >generating
             <i class="fa-solid fa-arrows-rotate fa-spin" />
           </button>
@@ -101,6 +118,57 @@
       <!--horizontal margin is just for display-->
       <div class="px-4 py-6">
         <div class="items-center relative">
+          <!-- Ellipsis -->
+          <span
+            on:click={dropDown}
+            on:keydown={dropDown}
+            tabindex="0"
+            class:hidden={dropState}
+            role="button"
+            class="absolute right-[16vw] md:right-[10vw] hover:cursor-pointer"
+          >
+            <i class="fa-solid fa-ellipsis" />
+          </span>
+          <!-- Close Button -->
+          <span
+            on:click={dropDown}
+            on:keydown={dropDown}
+            tabindex="0"
+            class:hidden={!dropState}
+            role="button"
+            class="absolute right-[16vw] md:right-[10vw] hover:cursor-pointer"
+          >
+            <i class="fa-solid fa-xmark" />
+          </span>
+          <!-- Drop Down -->
+          <div
+            id="dropdown"
+            class:hidden={!dropState}
+            class="z-10 absolute hidden right-[21vw] md:right-[12vw] text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+          >
+            <ul class="py-2" aria-labelledby="dropdownButton">
+              <li>
+                <span
+                  on:click={copyToClipboard}
+                  on:keydown={copyToClipboard}
+                  tabindex="0"
+                  role="button"
+                  class="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  >{Copy}</span
+                >
+              </li>
+              <!-- <li>
+                <span
+                  on:click={copyToClipboard}
+                  on:keydown={copyToClipboard}
+                  tabindex="0"
+                  role="button"
+                  class="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  >Share</span
+                >
+              </li> -->
+            </ul>
+          </div>
           <h2 id="author" class="text-lg font-semibold py-7 text-white -mt-1">
             {text.author}
           </h2>
@@ -116,7 +184,7 @@
         <div class="generate text-black text-center mx-auto py-2">
           <button
             on:click={generateQuote}
-            class="max-h-[15vh] max-w-[90%] text-[2vw] px-[1vw] bg-amber-400 rounded-lg"
+            class="max-h-[15vh] max-w-[70vw] px-[1vw] bg-amber-400 rounded-lg"
             >generate random quote
             <i class="fa-solid fa-arrows-rotate" />
           </button>
@@ -128,17 +196,16 @@
   {/await}
 </div>
 
-<!-- Test -->
-
+<!-- CSS -->
 <style>
-  .generate * {
-    border: red 2px solid;
-  }
   #author {
     font-size: clamp(32px, 3vw, 80px);
   }
 
   #content {
-    font-size: clamp(12px, 2.4vw, 60px);
+    font-size: clamp(12px, 4vw, 20px);
+  }
+  .generate {
+    font-size: clamp(15px, 4vw, 20px);
   }
 </style>
