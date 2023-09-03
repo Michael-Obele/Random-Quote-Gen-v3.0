@@ -10,8 +10,7 @@
 
   let counter = 0;
 
-  console.log('background = ', $background);
-  function handleClick() {
+  function ChangeColor() {
     counter = (counter + 1) % colors.length;
     isAnimated = true;
     rotation = 45;
@@ -52,7 +51,7 @@
     </a>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="flex md:order-3" on:click={handleClick}>
+    <div class="flex md:order-3" on:click={ChangeColor}>
       <i
         class="fa-solid fa-fill-drip fa-2x"
         style="transform: rotate({$animatedRotation}deg) scale({$animatedScale});"
