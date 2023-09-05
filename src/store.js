@@ -1,7 +1,5 @@
 import { writable } from 'svelte/store';
 
-export const colors = ['dbb3b1', 'c89fa3', 'a67f8e', '6c534e', '2c1a1d'];
-
 export const LightColors = [
   '#f4acb7',
   '#ea8c55',
@@ -55,4 +53,4 @@ export const DarkColors = [
   '#ed33b9',
 ];
 
-export const background = writable('#' + colors[0]);
+export const background = writable(DarkColors[0]);

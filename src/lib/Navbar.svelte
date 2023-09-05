@@ -2,7 +2,7 @@
   import '../app.css';
   import Logo from '../Logo.svelte';
   import { spring } from 'svelte/motion';
-  import { background, colors, LightColors, DarkColors } from '../store';
+  import { background, LightColors, DarkColors } from '../store';
   import { page } from '$app/stores';
   import { afterUpdate } from 'svelte';
 
@@ -13,7 +13,7 @@
   let counter = 0;
 
   function ChangeColor() {
-    counter = (counter + 1) % colors.length;
+    counter = (counter + 1) % DarkColors.length;
     isAnimated = true;
     rotation = 45;
     scale = 1.2;
@@ -54,8 +54,7 @@
   <div
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
   >
-    <!-- svelte-ignore a11y-invalid-attribute -->
-    <a href="#" class="flex items-center">
+    <a href="/" class="flex items-center">
       <Logo />
     </a>
 
