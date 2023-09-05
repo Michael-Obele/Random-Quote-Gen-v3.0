@@ -36,7 +36,6 @@
   afterUpdate(() => {
     // @ts-ignore
     current_url = $page.url.href.split('/').pop();
-    console.log('current_url = ', current_url);
   });
   let current_url = $page.url.pathname;
 
