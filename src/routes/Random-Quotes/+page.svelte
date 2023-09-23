@@ -1,17 +1,18 @@
 <script>
   import { afterUpdate } from 'svelte';
-  import { searchContent } from '$lib/store';
-  import { get } from 'svelte/store';
+  import { background, DarkColors } from '$lib/store';
 
   /**
    * @type {any[]}
    */
   $: value = [];
   $: textLoad = '';
+  $: more = '';
 
   afterUpdate(() => {});
 
   $: number = 3;
+  let setCounter;
   let searchBy;
   let searchText = '';
   let searchType = 'Author';
@@ -37,15 +38,15 @@
     switch (type) {
       case 'Tag(s)':
         url = 'https://api.quotable.io/quotes?tags=' + text + '&limit=100';
+        console.log(url);
         break;
       case 'Author':
         url = 'https://api.quotable.io/quotes?author=' + text + '&limit=100';
         break;
-      case 'Quote':
+      case 'Text':
         url =
-          'https://api.quotable.io/search/quotes?query=' +
-          text +
-          '&fields=content&limit=100';
+          'https://api.quotable.io/search/quotes?query=' + text + '&limit=100';
+        console.log(url);
         break;
       default:
         break;
@@ -54,9 +55,17 @@
       const res = await fetch(url);
       const result = await res.json();
       value = result.results;
-      if (result.totalPages > 1) {
-      }
       textLoad = '';
+      if (result.count == 0) {
+        textLoad = 'No Result';
+      }
+      if (result.totalCount > result.count) {
+        more = 'More can be loaded...';
+      }
+      setCounter = Math.floor(Math.random() * DarkColors.length);
+      background.set(DarkColors[setCounter]);
+      url = '';
+      console.log(result);
       return result;
     }
   }
@@ -71,6 +80,7 @@
   function search() {
     value = [];
     textLoad = 'Please Wait...';
+    more = '';
     searchBy = searchQuote(searchText, searchType);
   }
 </script>
@@ -210,5 +220,10 @@
         <p>- {val.content}</p>
       </li>
     {/each}
+    <li
+      class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 hover:text-blue-700"
+    >
+      {more}
+    </li>
   </ul>
 {/if}

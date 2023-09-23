@@ -1,12 +1,5 @@
 <script>
   import { background, counter, DarkColors } from '$lib/store';
-  import { get } from 'svelte/store';
-  import { afterUpdate } from 'svelte';
-
-  const value = get(counter);
-  afterUpdate(() => {
-    console.log(get(counter));
-  });
 
   let setCounter;
   let url = 'https://api.quotable.io/quotes/random';
