@@ -54,3 +54,7 @@ export const DarkColors = [
 ];
 
 export const background = writable(DarkColors[0]);
+
+export let counter = writable(0);
+
+export let searchContent = writable([]);

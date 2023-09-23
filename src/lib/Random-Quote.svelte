@@ -1,7 +1,15 @@
 <script>
-  import { background } from '../store';
+  import { background, counter, DarkColors } from '$lib/store';
+  import { get } from 'svelte/store';
+  import { afterUpdate } from 'svelte';
 
-  let url = 'https://api.quotable.io/random';
+  const value = get(counter);
+  afterUpdate(() => {
+    console.log(get(counter));
+  });
+
+  let setCounter;
+  let url = 'https://api.quotable.io/quotes/random';
   let dropState = false;
   let textToCopy = '';
   let Copy = 'Copy';
@@ -10,7 +18,8 @@
 
   async function getRandomQuote() {
     const res = await fetch(url);
-    const text = await res.json();
+    let text = await res.json();
+    text = text[0];
     const time = new Date().toLocaleTimeString([], {
       hour: 'numeric',
       minute: 'numeric',
@@ -18,6 +27,8 @@
     });
     textToCopy = `${text.author} - ${text.content}`;
     text.time = time;
+    setCounter = Math.floor(Math.random() * DarkColors.length);
+    background.set(DarkColors[setCounter]);
     return text;
   }
 
@@ -34,7 +45,8 @@
     navigator.clipboard.writeText(textToCopy);
     setTimeout(() => {
       Copy = 'Copy';
-    }, 1200);
+      dropState = false;
+    }, 1500);
   }
 </script>
 
@@ -73,8 +85,8 @@
             class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-20 mb-4"
           />
         </div>
-        <!-- Content -->
-        <div id="content" class="mt-3 text-white animate-pulse">
+        <!-- Content Loading -->
+        <div class="mt-3 text-white animate-pulse">
           <div class="flex space-x-4 md:max-w-[90%]">
             <div
               class="h-[2.5vw] bg-gray-200 rounded-full dark:bg-gray-700 w-60 mb-4"
@@ -87,7 +99,7 @@
             />
           </div>
         </div>
-        <div id="content" class="mt-3 text-white animate-pulse">
+        <div class="mt-3 text-white animate-pulse">
           <div class="flex space-x-5 md:max-w-[90%]">
             <div
               class="h-[2.5vw] bg-gray-200 rounded-full dark:bg-gray-700 w-80 mb-4"
@@ -100,16 +112,17 @@
             />
           </div>
         </div>
-        <!-- Button -->
-        <div class="generate text-black text-center mx-auto py-2">
+        <!-- Button Loading-->
+        <div class="text-black text-center mx-auto py-2">
           <button
-            class="max-h-[15vh] max-w-[70vw] px-[1vw] bg-amber-400 rounded-lg cursor-wait"
+            class="max-h-[15vh] max-w-[70vw] px-[1vw] text-[5vw] md:text-[3vw] bg-amber-400 rounded-lg cursor-wait"
             >generating
             <i class="fa-solid fa-arrows-rotate fa-spin" />
           </button>
         </div>
       </div>
     </div>
+    <!-- End of Loading -->
   {:then text}
     <!-- Loaded -->
     <div
@@ -169,6 +182,7 @@
               </li> -->
             </ul>
           </div>
+          <!-- Content Loaded -->
           <h2 id="author" class="text-lg font-semibold py-7 text-white -mt-1">
             {text.author}
           </h2>
@@ -177,14 +191,15 @@
           >
         </div>
         <p class="text-white">Tag: {text.tags}</p>
-        <p id="content" class="py-7 mt-3 text-white text-md">
+        <p class="py-5 md:py-7 text-white text-[4vw] md:text-[3vw]">
           {text.content}
         </p>
+        <!-- End of Loaded Content -->
         <!-- Button -->
-        <div class="generate text-black text-center mx-auto py-2">
+        <div class="text-black text-center mx-auto py-2">
           <button
             on:click={generateQuote}
-            class="max-h-[15vh] max-w-[70vw] px-[1vw] bg-amber-400 rounded-lg"
+            class="max-h-[15vh] max-w-[70vw] px-[1vw] text-[5vw] md:text-[3vw] bg-amber-400 rounded-lg"
             >generate random quote
             <i class="fa-solid fa-arrows-rotate" />
           </button>
@@ -200,12 +215,5 @@
 <style>
   #author {
     font-size: clamp(32px, 3vw, 80px);
-  }
-
-  #content {
-    font-size: clamp(12px, 4vw, 20px);
-  }
-  .generate {
-    font-size: clamp(15px, 4vw, 20px);
   }
 </style>

@@ -1,6 +1,6 @@
 <script>
   import Navbar from '$lib/Navbar.svelte';
-  import { background } from '../store';
+  import { background } from '$lib/store';
 </script>
 
 <svelte:head>

@@ -62,7 +62,6 @@ declare module '$env/static/private' {
 	export const JOURNAL_STREAM: string;
 	export const _: string;
 	export const npm_config_prefix: string;
-	export const npm_config_npm_version: string;
 	export const XDG_SESSION_CLASS: string;
 	export const USERNAME: string;
 	export const TERM: string;
@@ -177,7 +176,6 @@ declare module '$env/dynamic/private' {
 		JOURNAL_STREAM: string;
 		_: string;
 		npm_config_prefix: string;
-		npm_config_npm_version: string;
 		XDG_SESSION_CLASS: string;
 		USERNAME: string;
 		TERM: string;
