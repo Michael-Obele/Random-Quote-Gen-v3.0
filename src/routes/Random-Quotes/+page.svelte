@@ -40,13 +40,16 @@
     switch (type) {
       case 'Tag(s)':
         url = 'https://api.quotable.io/quotes?tags=' + text + '&limit=100';
-        console.log(url);
         break;
       case 'Author':
+        url = 'https://api.quotable.io/quotes?author=' + text + '&limit=100';
         break;
       case 'Quote':
+        url =
+          'https://api.quotable.io/search/quotes?query=' +
+          text +
+          '&fields=content&limit=100';
         break;
-
       default:
         break;
     }
@@ -184,25 +187,18 @@
   </div>
 </form>
 <!-- Result -->
-{#await searchQuote}
-  <p>Loading</p>
-{:then}
-  {#if value.length}
-    <ul
-      class=" w-[90vw] md:w-[70vw] mx-auto text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-    >
-      {#each value as val}
-        <li
-          class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 hover:text-blue-700"
-        >
-          <h1>{val.author}</h1>
-          <cite>{val.tags}</cite>
-          <p>- {val.content}</p>
-        </li>
-      {/each}
-    </ul>
-    <!-- {#each value as val}
-      <hr />
-      {/each} -->
-  {/if}
-{/await}
+{#if value.length}
+  <ul
+    class=" w-[90vw] md:w-[70vw] mx-auto text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+  >
+    {#each value as val}
+      <li
+        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 hover:text-blue-700"
+      >
+        <h1>{val.author}</h1>
+        <cite>{val.tags}</cite>
+        <p>- {val.content}</p>
+      </li>
+    {/each}
+  </ul>
+{/if}
