@@ -9,11 +9,7 @@
   $: value = [];
   $: textLoad = '';
 
-  afterUpdate(() => {
-    console.log('the component just updated');
-    console.log('value', value);
-    console.log(value.length);
-  });
+  afterUpdate(() => {});
 
   $: number = 3;
   let searchBy;
@@ -59,9 +55,7 @@
       const result = await res.json();
       value = result.results;
       if (result.totalPages > 1) {
-        console.log('More can be loaded');
       }
-      console.log('result = ', result);
       textLoad = '';
       return result;
     }
@@ -76,7 +70,7 @@
   }
   function search() {
     value = [];
-    textLoad = 'Please Wait';
+    textLoad = 'Please Wait...';
     searchBy = searchQuote(searchText, searchType);
   }
 </script>
