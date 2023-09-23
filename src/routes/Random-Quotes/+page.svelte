@@ -119,7 +119,7 @@
 <ul
   class="w-[90vw] md:w-[70vw] mx-auto items-center text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white"
 >
-  {#each ['Author', 'Quote', 'Tag(s)'] as item}
+  {#each ['Author', 'Text', 'Tag(s)'] as item}
     <li
       class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
     >
