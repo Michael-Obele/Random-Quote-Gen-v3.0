@@ -6,7 +6,7 @@ export const navBarItems = [
   },
   {
     text: 'Random Quotes',
-    href: '/#Random-Quotes',
+    href: '/Random-Quotes',
     link: '#Random-Quotes',
   },
   {
