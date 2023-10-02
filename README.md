@@ -3,7 +3,8 @@
 Welcome to the Random Quote Generator web app! This impressive application is designed to inspire and uplift users by providing them with a collection of random quotes. Built with Svelte, this sleek and intuitive web app allows users to generate random quotes, search for quotes by author, tags, and text, and even changes the background color after every quote.
 
 ## Live Version
-Experience the Random Quote Generator web app in action by visiting the live version [here](https://quote-app-v3.netlify.app/). Get ready to be inspired!
+Experience the Random Quote Generator web app in action by visiting the [Live Version Here](https://quote-app-v3.netlify.app/) or [The Vercel Version](https://random-quote-gen-v3-0.vercel.app/). Get ready to be inspired!
+
 
 ## Features
 
