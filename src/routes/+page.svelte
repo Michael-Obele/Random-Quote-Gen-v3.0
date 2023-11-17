@@ -1,5 +1,5 @@
 <script>
-  import RandomQuote from '$lib/Random-Quote.svelte';
+  import RandomQuote from './Random-Quote.svelte';
 </script>
 
 <RandomQuote />

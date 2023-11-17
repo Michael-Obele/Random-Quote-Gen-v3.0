@@ -86,144 +86,137 @@
 </script>
 
 <!-- Html Part -->
-<div class="pt-[20vh]">
-  <h1>Generate Quote By Number</h1>
-  <button class="bg-slate-600 rounded-md text-white" on:click={handleClick}>
-    {number > 1
-      ? `generate ${number} random quotes`
-      : `generate ${number} random quote`}
-  </button>
-  <input
-    class=" bg-slate-400 text-white"
-    type="number"
-    name="quoteLimit"
-    min="1"
-    max="20"
-    bind:value={number}
-  />
-
-  {#await promise}
-    <p>...waiting</p>
-  {:then texts}
-    {#each texts as text}
-      <div class="max-w-500px p-5">
-        <blockquote class="m-0 px-10 text-base">
-          <p>{text.content}</p>
-          <cite class=" text-sm italic mt-1">- {text.author}</cite>
-        </blockquote>
-      </div>
-    {/each}
-  {:catch error}
-    <p style="color: red">{error.message}</p>
-  {/await}
-</div>
-
-<hr class=" h-1 w-full" />
-<h1>Generate Quote By Searching Text</h1>
-
-<h3 class=" text-center mb-4 font-semibold text-gray-900 dark:text-white">
-  Search By:
-</h3>
-<ul
-  class="w-[90vw] md:w-[70vw] mx-auto items-center text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white"
->
-  {#each ['Author', 'Text', 'Tag(s)'] as item}
-    <li
-      class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
-    >
-      <div class="flex items-center pl-3">
-        <input
-          id={item}
-          type="radio"
-          value={item}
-          bind:group={searchType}
-          name="search"
-          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-        />
-        <label
-          for={item}
-          class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >{item}
-        </label>
-      </div>
-    </li>
-  {/each}
-</ul>
-
-<!-- Form -->
-
-<form class=" w-[90vw] md:w-[70vw] mx-auto">
-  <label
-    for="search"
-    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-    >Search</label
-  >
-  <div class="relative">
-    <div
-      class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-    >
-      <svg
-        class="w-4 h-4 text-gray-500 dark:text-gray-400"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 20 20"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-        />
-      </svg>
-    </div>
+<div class="h-fit min-h-screen pb-5 pt-[15vh]">
+  <!-- Hidden -->
+  <div class="hidden pt-[20vh]">
+    <h1>Generate Quote By Number</h1>
+    <button class="rounded-md bg-slate-600 text-white" on:click={handleClick}>
+      {number > 1
+        ? `generate ${number} random quotes`
+        : `generate ${number} random quote`}
+    </button>
     <input
-      type="search"
-      id="search-text"
-      bind:value={searchText}
-      class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      placeholder="Search For Quotes..."
-      required
-    />
-    <button
-      type="submit"
-      on:click={search}
-      class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >Search</button
-    >
+      class="bg-slate-400 text-white"
+      type="number"
+      name="quoteLimit"
+      min="1"
+      max="20"
+      bind:value={number} />
+
+    {#await promise}
+      <p>...waiting</p>
+    {:then texts}
+      {#each texts as text}
+        <div class="max-w-500px p-5">
+          <blockquote class="m-0 px-10 text-base">
+            <p>{text.content}</p>
+            <cite class="mt-1 text-sm italic">- {text.author}</cite>
+          </blockquote>
+        </div>
+      {/each}
+    {:catch error}
+      <p style="color: red">{error.message}</p>
+    {/await}
+    <hr class="h-1 w-full" />
   </div>
-</form>
-<!-- Loading -->
-{#if textLoad}
+  <!-- End of Hidden -->
+
+  <h1 class="mb-4 text-center font-semibold text-gray-900 dark:text-white">
+    Generate Quote By Searching...
+  </h1>
+
+  <h3 class="mb-4 text-center font-semibold text-gray-900 dark:text-white">
+    Search By:
+  </h3>
   <ul
-    class=" w-[90vw] md:w-[70vw] mx-auto text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-  >
-    <li
-      class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 hover:text-blue-700"
-    >
-      <h1>{textLoad}</h1>
-    </li>
-  </ul>
-{/if}
-<!-- Result -->
-{#if value.length}
-  <ul
-    class=" w-[90vw] md:w-[70vw] mx-auto text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-  >
-    {#each value as val}
+    class="mx-auto w-[90vw] items-center rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:flex md:w-[70vw]">
+    {#each ['Author', 'Text', 'Tag(s)'] as item}
       <li
-        class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 hover:text-blue-700"
-      >
-        <h1>{val.author}</h1>
-        <cite>({val.tags})</cite>
-        <p>- {val.content}</p>
+        class="w-full border-b border-gray-200 dark:border-gray-600 sm:border-b-0 sm:border-r">
+        <div class="flex items-center pl-3">
+          <input
+            id={item}
+            type="radio"
+            value={item}
+            bind:group={searchType}
+            name="search"
+            class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700" />
+          <label
+            for={item}
+            class="ml-2 w-full py-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >{item}
+          </label>
+        </div>
       </li>
     {/each}
-    <li
-      class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 hover:text-blue-700"
-    >
-      {more}
-    </li>
   </ul>
-{/if}
+
+  <!-- Form -->
+
+  <form class="mx-auto w-[90vw] md:w-[70vw]">
+    <label
+      for="search"
+      class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Search</label>
+    <div class="relative">
+      <div
+        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        <svg
+          class="h-4 w-4 text-gray-500 dark:text-gray-400"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        </svg>
+      </div>
+      <input
+        type="search"
+        id="search-text"
+        bind:value={searchText}
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        placeholder="Search For Quotes..."
+        required />
+      <button
+        type="submit"
+        on:click={search}
+        class="absolute bottom-2.5 right-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >Search</button>
+    </div>
+  </form>
+  <!-- Loading -->
+  {#if textLoad}
+    <ul
+      class="mx-auto w-[90vw] rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[70vw]">
+      <li
+        class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600">
+        <h1>{textLoad}</h1>
+      </li>
+    </ul>
+  {/if}
+  <!-- Result -->
+  {#if value.length}
+    <ul
+      class="mx-auto w-[90vw] rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[70vw]">
+      {#each value as val}
+        <li
+          class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600">
+          <h1>{val.author}</h1>
+          <cite>({val.tags})</cite>
+          <p>- {val.content}</p>
+        </li>
+      {/each}
+      {#if more}
+        <li
+          class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600">
+          {more}
+        </li>
+      {/if}
+    </ul>
+  {/if}
+</div>

@@ -1,6 +1,6 @@
 <script>
   import '../app.css';
-  import Logo from '../Logo.svelte';
+  import Logo from './Logo.svelte';
   import { spring } from 'svelte/motion';
   import { background, counter, DarkColors } from '$lib/store';
   import { page } from '$app/stores';
@@ -46,24 +46,24 @@
 <!-- Start of Nav Bar -->
 
 <nav
-  class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
+  class="fixed left-0 top-0 z-20 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900 md:h-[10vh]"
 >
   <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+    class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
   >
-    <a href="/" class="flex element items-center">
+    <a href="/" class="element flex items-center">
       <Logo />
     </a>
 
     <span
-      class="flex element md:order-3 hover:cursor-pointer"
+      class="element flex hover:cursor-pointer md:order-3"
       on:keydown={ChangeColor}
       on:click={ChangeColor}
       tabindex="0"
       role="button"
     >
       <i
-        class="fa-solid fa-fill-drip fa-2x"
+        class="fa-solid fa-fill-drip fa-2x hover:animate-wiggle"
         style="transform: rotate({$animatedRotation}deg) scale({$animatedScale});"
       />
     </span>
@@ -73,7 +73,7 @@
         on:click={openMenu}
         data-collapse-toggle="navbar-sticky"
         type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
         aria-controls="navbar-sticky"
         aria-expanded="false"
       >
@@ -82,19 +82,19 @@
       </button>
     </div>
     <div
-      class="items-center justify-between w-full md:flex md:w-auto md:order-1"
+      class="w-full items-center justify-between md:order-1 md:flex md:w-auto"
       class:hidden={isMenu}
       id="navbar-sticky"
     >
       <ul
-        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium dark:border-gray-700 dark:bg-gray-800 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 md:dark:bg-gray-900"
       >
         {#each navBarItems as Item}
           {#if current_url === Item.link}
             <li>
               <a
                 href={Item.href}
-                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                class="block rounded bg-blue-700 py-2 pl-3 pr-4 text-white md:bg-transparent md:p-0 md:text-blue-700 md:dark:text-blue-500"
                 aria-current="page">{Item.text}</a
               >
             </li>
@@ -102,7 +102,7 @@
             <li>
               <a
                 href={Item.href}
-                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block rounded py-2 pl-3 pr-4 text-gray-900 hover:bg-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
                 aria-current="page">{Item.text}</a
               >
             </li>

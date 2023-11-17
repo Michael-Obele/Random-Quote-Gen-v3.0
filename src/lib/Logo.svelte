@@ -1,7 +1,7 @@
 <svg
   width="208.60000610351562"
   height="83.9010009765625"
-  class="w-[16vw] h-[10vw]"
+  class="w-[20vw] max-w-[104px] h-[5vh] max-h-[45px]"
   viewBox="0 0 208.6 83.901"
   xmlns="http://www.w3.org/2000/svg"
   ><g

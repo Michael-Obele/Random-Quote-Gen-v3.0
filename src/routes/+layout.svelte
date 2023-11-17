@@ -7,9 +7,9 @@
   <title>Random Quote</title>
 </svelte:head>
 
-<div class="h-fit pb-[60vh]" style="background-color:{$background}">
+<div class="dark h-fit" style="background-color:{$background}">
   <Navbar />
-  <slot />
+    <slot />
 </div>
 
 <style>

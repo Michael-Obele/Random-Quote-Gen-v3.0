@@ -1,13 +1,13 @@
 export const navBarItems = [
   {
     text: 'Random Quote',
-    href: '/#Random-Quote',
-    link: '#Random-Quote',
+    href: '/',
+    link: '',
   },
   {
     text: 'Random Quotes',
     href: '/Random-Quotes',
-    link: '#Random-Quotes',
+    link: 'Random-Quotes',
   },
   {
     text: 'About',
