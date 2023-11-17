@@ -1,8 +1,8 @@
 <script>
-   import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import { afterUpdate } from 'svelte';
- 
-   let text = 'Loading...';
+
+  let text = 'Loading...';
   let quoteText = '';
 
   /**
@@ -27,39 +27,32 @@
   onMount(() => {
     typeText(text);
   });
-
-
- 
 </script>
 
-
 <div
-  class="relative mx-auto my-5 w-[99%] max-w-md rounded-lg bg-gray-800 shadow-lg md:max-w-[70vw]"
->
+  class="relative mx-auto my-5 w-[99%] max-w-md rounded-lg bg-gray-800 shadow-lg md:max-w-[70vw]">
   <!-- random btn -->
   <button
-    class="group absolute right-8 top-2 flex cursor-pointer text-lg font-semibold hover:scale-110"
-  >
+    class="group absolute right-8 top-2 flex cursor-pointer text-lg font-semibold hover:scale-110">
     random
-    <i class="fa-solid fa-arrows-spin m-1 ml-2 h-5 w-5 animate-spin stroke-2"></i>
-  
+    <i class="fa-solid fa-arrows-spin m-1 ml-2 h-5 w-5 animate-spin stroke-2" />
   </button>
   <!-- End of random btn -->
-<blockquote
-    class="my-4 border-s-4 border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-gray-800"
-  >
+  <blockquote
+    class="my-4 mt-36 rounded-sm border-s-[10px] border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-gray-800">
     <p
-      class="py-10 text-xl font-medium italic leading-relaxed text-gray-900 dark:text-white md:text-2xl"
-    >
+      class="whitespace-nowrap py-10 text-xl font-medium italic leading-relaxed text-gray-900 dark:text-white md:text-2xl">
       " {quoteText} "
     </p>
   </blockquote>
 </div>
 
-
-<section class="absolute bottom-0 z-50 flex h-[25vh] w-full flex-col bg-slate-200 p-12 px-[10rem] dark:bg-slate-700">
+<section
+  class="absolute bottom-0 z-50 flex h-[25vh] w-full flex-col bg-slate-200 p-12 px-[10rem] dark:bg-slate-700">
   {#if text}
-  <h3 class="text-lg font-bold capitalize text-white md:text-2xl">{text}</h3>
-  <p class="text-sm font-semibold uppercase text-gray-400 md:text-lg">{text}</p>
-{/if}
-</section> 
+    <h3 class="text-lg font-bold capitalize text-white md:text-2xl">{text}</h3>
+    <p class="text-sm font-semibold uppercase text-gray-400 md:text-lg">
+      {text}
+    </p>
+  {/if}
+</section>
