@@ -1,5 +1,7 @@
 <script lang="ts">
   import { background } from '$lib/store';
+  import Download from '$lib/logos/download.svelte';
+  import Copy from '$lib/logos/copy.svelte';
 
   export let title: string;
   export let body: string;
@@ -32,12 +34,28 @@
 
   <hr class="my-8 h-px border-0 bg-gray-200" />
   {#if isLoading}
-    <button
-      disabled
-      style="background-color:{$background}"
-      class="rounded-full px-6 py-2 text-xl capitalize text-white"
-      >...loading</button
-    >
+    <div class="flex justify-between">
+      <button
+        disabled
+        style="background-color:{$background}"
+        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+        >..loading</button
+      >
+      <button
+        disabled
+        style="background-color:{$background + '6b'}"
+        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+      >
+        <Download />
+      </button>
+      <button
+        disabled
+        style="background-color:{$background + '6b'}"
+        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+      >
+        <Copy />
+      </button>
+    </div>
   {:else}
     <slot><!-- optional fallback --></slot>
   {/if}

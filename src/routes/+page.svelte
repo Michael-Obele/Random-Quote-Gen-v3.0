@@ -1,8 +1,8 @@
 <script>
   import { background, DarkColors } from '$lib/store';
   import Download from '$lib/logos/download.svelte';
-  import Card from '$lib/components/Card.svelte';
   import Copy from '$lib/logos/copy.svelte';
+  import Card from '$lib/components/Card.svelte';
 
   let isLoading = true;
   let loadingText = '...loading';
@@ -20,7 +20,7 @@
       } else {
         clearInterval(interval);
       }
-    }, 100);
+    }, 95);
   }
 
   if (isLoading) {
