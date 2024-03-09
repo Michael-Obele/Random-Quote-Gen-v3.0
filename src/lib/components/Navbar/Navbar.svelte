@@ -1,6 +1,6 @@
 <script>
-  import '../app.css';
-  import Logo from './Logo.svelte';
+  import '$lib/app.css';
+  import Logo from '$lib/components/Logo.svelte';
   import { spring } from 'svelte/motion';
   import { background, counter, DarkColors } from '$lib/store';
   import { page } from '$app/stores';

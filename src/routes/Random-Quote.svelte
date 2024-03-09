@@ -6,7 +6,6 @@
 
   let setCounter;
   let url = 'https://api.quotable.io/quotes/random';
-  // let url = 'https://api.quotable.io/quoes/random';
   let textToCopy = '';
 
   let promise = getRandomQuote();

@@ -31,6 +31,7 @@ declare module '$env/static/private' {
 	export const QT_ACCESSIBILITY: string;
 	export const COLORTERM: string;
 	export const XDG_CONFIG_DIRS: string;
+	export const NVM_INC: string;
 	export const XDG_MENU_PREFIX: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const GNOME_DESKTOP_SESSION_ID: string;
@@ -42,6 +43,7 @@ declare module '$env/static/private' {
 	export const DESKTOP_SESSION: string;
 	export const SSH_AGENT_PID: string;
 	export const GTK_MODULES: string;
+	export const DBUS_STARTER_BUS_TYPE: string;
 	export const PWD: string;
 	export const XDG_SESSION_DESKTOP: string;
 	export const LOGNAME: string;
@@ -50,7 +52,6 @@ declare module '$env/static/private' {
 	export const _: string;
 	export const XAUTHORITY: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
-	export const GJS_DEBUG_TOPICS: string;
 	export const WINDOWPATH: string;
 	export const HOME: string;
 	export const USERNAME: string;
@@ -63,7 +64,7 @@ declare module '$env/static/private' {
 	export const INVOCATION_ID: string;
 	export const MANAGERPID: string;
 	export const CHROME_DESKTOP: string;
-	export const GJS_DEBUG_OUTPUT: string;
+	export const NVM_DIR: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const LESSCLOSE: string;
 	export const XDG_SESSION_CLASS: string;
@@ -76,6 +77,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const SHLVL: string;
 	export const QT_IM_MODULE: string;
+	export const DBUS_STARTER_ADDRESS: string;
 	export const npm_config_user_agent: string;
 	export const npm_execpath: string;
 	export const XDG_RUNTIME_DIR: string;
@@ -89,6 +91,7 @@ declare module '$env/static/private' {
 	export const GDMSESSION: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
+	export const NVM_BIN: string;
 	export const GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 	export const npm_node_execpath: string;
 	export const GIO_LAUNCHED_DESKTOP_FILE: string;
@@ -128,6 +131,7 @@ declare module '$env/dynamic/private' {
 		QT_ACCESSIBILITY: string;
 		COLORTERM: string;
 		XDG_CONFIG_DIRS: string;
+		NVM_INC: string;
 		XDG_MENU_PREFIX: string;
 		TERM_PROGRAM_VERSION: string;
 		GNOME_DESKTOP_SESSION_ID: string;
@@ -139,6 +143,7 @@ declare module '$env/dynamic/private' {
 		DESKTOP_SESSION: string;
 		SSH_AGENT_PID: string;
 		GTK_MODULES: string;
+		DBUS_STARTER_BUS_TYPE: string;
 		PWD: string;
 		XDG_SESSION_DESKTOP: string;
 		LOGNAME: string;
@@ -147,7 +152,6 @@ declare module '$env/dynamic/private' {
 		_: string;
 		XAUTHORITY: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
-		GJS_DEBUG_TOPICS: string;
 		WINDOWPATH: string;
 		HOME: string;
 		USERNAME: string;
@@ -160,7 +164,7 @@ declare module '$env/dynamic/private' {
 		INVOCATION_ID: string;
 		MANAGERPID: string;
 		CHROME_DESKTOP: string;
-		GJS_DEBUG_OUTPUT: string;
+		NVM_DIR: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		LESSCLOSE: string;
 		XDG_SESSION_CLASS: string;
@@ -173,6 +177,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		SHLVL: string;
 		QT_IM_MODULE: string;
+		DBUS_STARTER_ADDRESS: string;
 		npm_config_user_agent: string;
 		npm_execpath: string;
 		XDG_RUNTIME_DIR: string;
@@ -186,6 +191,7 @@ declare module '$env/dynamic/private' {
 		GDMSESSION: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
+		NVM_BIN: string;
 		GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 		npm_node_execpath: string;
 		GIO_LAUNCHED_DESKTOP_FILE: string;

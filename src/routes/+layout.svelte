@@ -1,5 +1,5 @@
 <script>
-  import Navbar from '$lib/Navbar.svelte';
+  import Navbar from '$lib/components/Navbar/Navbar.svelte';
   import { background } from '$lib/store';
 </script>
 
@@ -7,13 +7,21 @@
   <title>Random Quote</title>
 </svelte:head>
 
-<div class="dark h-fit" style="background-color:{$background}">
+<div
+  class="dark h-screen pt-[10rem] align-middle"
+  style="background-color:{$background}"
+>
   <Navbar />
-    <slot />
+  <slot />
+  <footer
+    class="absolute bottom-0 z-50 flex w-full flex-row justify-center bg-gray-800 py-5"
+  >
+    <h3 class="font-bold capitalize text-white">
+      Made with <img
+        class="mx-2 inline h-5 w-5"
+        src="https://www.svgrepo.com/show/501921/love.svg"
+        alt="love from svgrepo"
+      /> from Michael
+    </h3>
+  </footer>
 </div>
-
-<style>
-  * {
-    color: white;
-  }
-</style>
