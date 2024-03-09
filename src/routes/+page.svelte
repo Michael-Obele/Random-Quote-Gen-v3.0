@@ -1,9 +1,11 @@
 <script>
   import { background, DarkColors } from '$lib/store';
+  import Download from '$lib/logos/download.svelte';
   import Card from '$lib/components/Card.svelte';
+  import Copy from '$lib/logos/copy.svelte';
 
   let isLoading = true;
-  let loadingText = '...';
+  let loadingText = '...loading';
   let quoteText = '';
 
   /**
@@ -16,9 +18,6 @@
         quoteText = text.substring(0, index);
         index++;
       } else {
-        if (text == '...') {
-          index = 0; // Reset the index to start over
-        }
         clearInterval(interval);
       }
     }, 100);
@@ -58,31 +57,39 @@
 </script>
 
 {#await randomQuotePromise}
-  <Card title="Random Quote" body={quoteText}>
-    <hr class="my-8 h-px border-0 bg-gray-200" />
-    <button
-      disabled
-      style="background-color:{$background}"
-      class="rounded-full px-6 py-2 text-xl capitalize text-white"
-      >...loading</button
-    >
-  </Card>
+  <Card title="Random Quote" body={quoteText} isLoading={true} />
 {:then quote}
-  <Card title="Random Quote" body={quoteText}>
-    <hr class="my-8 h-px border-0 bg-gray-200" />
-    <button
-      style="background-color:{$background}"
-      class="rounded-full px-6 py-2 text-xl capitalize text-white"
-      on:click={generateQuote}>Random</button
-    >
+  <Card
+    title={`${quote.author} - ${quote.tags}`}
+    isLoading={false}
+    body={quoteText}
+  >
+    <div class="flex justify-between">
+      <button
+        style="background-color:{$background}"
+        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+        on:click={generateQuote}>Random</button
+      >
+      <button
+        style="background-color:{$background + '6b'}"
+        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+        on:click={generateQuote}
+      >
+        <Download />
+      </button>
+      <button
+        style="background-color:{$background + '6b'}"
+        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+        on:click={generateQuote}
+      >
+        <Copy />
+      </button>
+    </div>
   </Card>
 {:catch error}
-  <div
-    class="mx-auto block h-fit w-full max-w-xl rounded-xl border border-gray-200 bg-white p-12 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-  >
-    <h5 class="mb-12 text-xl italic text-gray-700 dark:text-gray-400">Error</h5>
-    <p class="mb-4 p-8 text-4xl font-bold text-white">
-      &quot; `Something went wrong: ${error.message}` &quot;
-    </p>
-  </div>
+  <Card
+    title={`Error`}
+    body={`Something went wrong: ${error.message}`}
+    isLoading={true}
+  />
 {/await}
