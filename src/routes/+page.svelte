@@ -124,7 +124,7 @@
 {/await}
 <div class:hidden={!copied} class="mx-auto mt-5 max-w-md">
   <div
-    class="mb-4 flex items-center rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400"
+    class="mx-auto mb-4 flex max-w-xs items-center rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400 md:max-w-md"
     role="alert"
   >
     <svg
@@ -140,7 +140,7 @@
     </svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> Quote Copied...
+      <span class="font-medium">Success!</span> Quote Copied!
     </div>
   </div>
 </div>
