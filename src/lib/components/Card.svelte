@@ -44,14 +44,14 @@
       <button
         disabled
         style="background-color:{$background + '6b'}"
-        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+        class="ms-2 inline-flex h-14 w-14 items-center justify-center rounded-full text-white"
       >
         <Download />
       </button>
       <button
         disabled
         style="background-color:{$background + '6b'}"
-        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+        class="ms-2 inline-flex h-14 w-14 items-center justify-center rounded-full text-white"
       >
         <Copy />
       </button>

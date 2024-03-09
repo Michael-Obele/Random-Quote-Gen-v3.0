@@ -13,7 +13,7 @@
   style="background-color:{$background}"
 >
   <Navbar />
-  <div class="pb-52">
+  <div class="invisible-scrollbar pb-52">
     <slot />
   </div>
   <Footer />
