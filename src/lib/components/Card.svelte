@@ -9,14 +9,16 @@
 </script>
 
 <div
-  class="mx-auto block h-fit w-full max-w-xl rounded-xl border border-gray-200 bg-white p-12 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800"
+  class="mx-auto block h-fit w-full max-w-sm rounded-xl border border-gray-200 bg-white px-4 py-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 md:max-w-xl md:p-12"
 >
-  <h5 class="mb-12 text-center text-xl italic text-gray-700 dark:text-gray-400">
+  <h5
+    class="mb-3 whitespace-break-spaces text-center text-base italic text-gray-700 dark:text-gray-400 md:mb-12 md:text-xl"
+  >
     {title}
   </h5>
 
   <svg
-    class="mb-1 h-8 w-8 text-gray-400 dark:text-gray-600"
+    class="h-5 w-5 text-gray-400 dark:text-gray-600 md:mb-1 md:h-8 md:w-8"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="currentColor"
@@ -26,7 +28,7 @@
       d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"
     />
   </svg>
-  <p class="mb-4 p-8 text-4xl font-bold text-white">
+  <p class="my-4 p-2 px-1 text-2xl font-bold text-white md:p-8 md:text-4xl">
     <q>
       {body}
     </q>
@@ -34,24 +36,24 @@
 
   <hr class="my-8 h-px border-0 bg-gray-200" />
   {#if isLoading}
-    <div class="flex justify-between">
+    <div class="flex justify-center space-x-5">
       <button
         disabled
         style="background-color:{$background}"
-        class="rounded-full px-6 py-2 text-xl capitalize text-white"
+        class="rounded-full px-16 py-2 text-lg capitalize text-white md:px-20 md:text-xl"
         >..loading</button
       >
       <button
         disabled
         style="background-color:{$background + '6b'}"
-        class="ms-2 inline-flex h-14 w-14 items-center justify-center rounded-full text-white"
+        class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
       >
         <Download />
       </button>
       <button
         disabled
         style="background-color:{$background + '6b'}"
-        class="ms-2 inline-flex h-14 w-14 items-center justify-center rounded-full text-white"
+        class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
       >
         <Copy />
       </button>

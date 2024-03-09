@@ -72,10 +72,12 @@
     const cardElement = document.getElementById('card'); // Assuming card has class 'card'
     if (!cardElement) return; // Handle potential missing element
 
-    const imageData = await domtoimage.toJpeg(cardElement, { quality: 0.95 });
-    const link = document.createElement('a');
-    link.href = imageData;
-    link.download = 'my-quote.jpeg';
+    const imageData = await domtoimage.toPng(cardElement, { quality: 0.98 });
+    var img = new Image();
+    img.src = imageData;
+    var link = document.createElement('a');
+    link.href = img.src;
+    link.download = 'my-quote.png';
     link.click();
   }
 </script>
@@ -89,15 +91,15 @@
       isLoading={false}
       body={quoteText}
     >
-      <div class="flex justify-between">
+      <div class="flex justify-center space-x-5">
         <button
           style="background-color:{$background}"
-          class="rounded-full px-6 py-2 text-xl capitalize text-white"
+          class="rounded-full px-16 py-2 text-lg capitalize text-white md:px-20 md:text-xl"
           on:click={generateQuote}>Random</button
         >
         <button
           style="background-color:{$background + '6b'}"
-          class="ms-2 inline-flex h-14 w-14 items-center justify-center rounded-full text-white"
+          class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
           on:click={saveQuoteImage}
           disabled={typing}
         >
@@ -105,7 +107,7 @@
         </button>
         <button
           style="background-color:{$background + '6b'}"
-          class="ms-2 inline-flex h-14 w-14 items-center justify-center rounded-full text-white"
+          class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
           on:click={copyToClipboard}
         >
           <Copy />
