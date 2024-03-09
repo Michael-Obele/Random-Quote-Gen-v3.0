@@ -1,8 +1,14 @@
+<script>
+  import Simple from './Simple.svelte';
+
+  import Card from './Card.svelte';
+</script>
+
 <div
-  class="px[20px] container mx-auto h-fit min-h-screen px-6 py-10 pb-5 pt-[5vh] md:pb-1 md:pt-0"
+  class="px[20px] container mx-auto h-fit min-h-screen px-6 py-10 pb-5 pt-[5vh] text-white md:pb-1 md:pt-0"
 >
   <h1
-    class="text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl"
+    class="text-3xl font-semibold capitalize leading-loose text-white md:text-5xl md:leading-normal"
   >
     Unleash the Power of <br /> Words with Our
     <span class="underline decoration-[#A5CCFF] decoration-4"
@@ -10,94 +16,55 @@
     >
   </h1>
 
-  <p class="mt-4 text-gray-500 dark:text-gray-300 xl:mt-6">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum quam
-    voluptatibus
-  </p>
-
-  <main class="mb-12 md:mb-2">
-    <h2>About Us</h2>
-    <p>
-      At Quote Oasis, we're on a mission to inspire and uplift your day, one
-      thought-provoking quote at a time. Our digital haven is where you'll find
-      a treasure trove of wisdom, motivation, and pure inspiration.
-    </p>
-
-    <h3>Our Story</h3>
-    <p>
-      Who's behind this digital haven, you ask? Well, we're just a bunch of
-      quote aficionados who believe that a few well-chosen words can brighten
-      your day, spark creativity, or provide the guidance you need.
-    </p>
-
-    <p>
-      Our journey began with a simple idea: Why not create a place where you can
-      stumble upon profound, funny, or thought-provoking quotes whenever you
-      want? And that's how Quote Oasis came to be.
-    </p>
-
-    <h3>Our Collection</h3>
-    <p>
-      We scoured the vast universe of quotes to handpick the best gems. Our
-      collection spans diverse categories, from literature to famous speeches,
-      from pop culture to timeless philosophers. No matter what you're seeking,
-      we've got you covered.
-    </p>
+  <h2 class="mt-4 text-3xl leading-normal dark:text-white xl:mt-6">
+    In today's fast-paced world, inspiration can be hard to come by. We, at
+    Happy Quotes, believe that the right words can spark creativity, ignite
+    motivation, and offer a fresh perspective. That's why we've developed a
+    powerful and versatile <b>Random Quote Generator App</b>. <br />
+    This app goes beyond simply presenting random quotes. It empowers you to:
+  </h2>
+  <main class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-12 xl:gap-12">
+    <Card
+      title="Find Inspiration"
+      body=" Search through our vast database of quotes by keyword, author, or theme. Discover hidden gems or revisit old favorites to fuel your next project or simply brighten your day."
+    />
+    <Card
+      title="Visualize Inspiration"
+      body="Transform your chosen quote into a beautiful image.  Unleash your inner designer and create a visually stunning and shareable masterpiece. Play around with different fonts, backgrounds, and colors to perfectly match the quote's essence and your personal style. Download the image and use it as wallpaper, social media content, or a printed reminder."
+    />
+    <Card
+      title="Capture Inspiration"
+      body="Never lose a powerful quote again!  With a single click, copy the quote directly to your clipboard."
+    />
+    <Card
+      title="Experience Dynamic Design"
+      body=" Our app keeps things fresh with a color change for every new quote. Immerse yourself in a vibrant visual experience that complements the power of the words."
+    />
   </main>
 
-  <section class="mb-12">
-    <h2>Our Mission</h2>
-    <p>
-      But Quote Oasis is more than just a collection of words. It's a place
-      where you can explore, share, and create. Dive into our extensive library,
-      find the perfect quote for any occasion, and share it with your friends
-      and family. Or, if you're feeling creative, create your own quote and let
-      it join the ranks of inspiration.
-    </p>
-  </section>
-
-  <section class="mb-12">
-    <h2>Join Us</h2>
-    <p>
-      So, whether you're here for a daily dose of motivation, a touch of humor,
-      or a new perspective on life, you're in good company at Quote Oasis. We're
-      thrilled to have you here, and we hope you find the inspiration you're
-      looking for.
-    </p>
-
-    <p>
-      Stay curious, stay inspired, and never stop exploring the world of quotes
-      with us at Quote Oasis!
-    </p>
+  <section class="my-12">
+    <h1
+      class="mb-6 text-center text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl"
+    >
+      Our Random Quote Generator App <br /> is the perfect
+      <span class="text-[#A5CCFF]"> companion </span>for:
+    </h1>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <Simple
+        title="Writers and Creatives"
+        body=" Find that elusive spark to ignite your next project."
+        svg="https://www.svgrepo.com/show/530444/availability.svg"
+      />
+      <Simple
+        title="Students and Professionals"
+        body=" Unearth insightful quotes to support your research or presentations."
+        svg="https://www.svgrepo.com/show/530437/safe-and-stable.svg"
+      />
+      <Simple
+        title="Anyone Seeking Inspiration"
+        body="Encounter thought-provoking words to elevate your day."
+        svg="https://www.svgrepo.com/show/530441/surveillance-defense.svg"
+      />
+    </div>
   </section>
 </div>
-
-<style>
-  header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  h2 {
-    font-size: 24px;
-    margin-top: 20px;
-  }
-
-  h3 {
-    font-size: 20px;
-    margin-top: 15px;
-  }
-
-  p {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-
-  section {
-    margin-bottom: 30px;
-  }
-</style>
