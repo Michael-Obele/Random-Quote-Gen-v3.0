@@ -70,7 +70,7 @@
     const cardElement = document.getElementById('card');
     if (!cardElement) return; // Handle potential missing element
 
-    const imageData = await domtoimage.toPng(cardElement, { quality: 0.98 });
+    const imageData = await domtoimage.toPng(cardElement, { scale: 0.5 });
     var img = new Image();
     img.src = imageData;
     var link = document.createElement('a');
