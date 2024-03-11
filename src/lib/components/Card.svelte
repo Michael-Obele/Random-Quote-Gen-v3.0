@@ -9,7 +9,7 @@
 </script>
 
 <div
-  class="mx-auto block h-fit w-full max-w-sm rounded-xl border border-gray-200 bg-white px-4 py-6 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 md:max-w-xl md:p-12"
+  class="borderbg-white mx-auto block h-fit w-full max-w-sm rounded-xl px-4 py-6 shadow hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-800 md:max-w-xl md:p-12"
 >
   <h5
     class="mb-3 whitespace-break-spaces text-center text-base italic text-gray-700 dark:text-gray-400 md:mb-12 md:text-xl"

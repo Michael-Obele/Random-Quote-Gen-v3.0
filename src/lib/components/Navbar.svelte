@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  import Search from './Search.svelte';
+
   import '$lib/app.css';
   import Logo from '$lib/logos/logo.svelte';
   import { spring } from 'svelte/motion';
@@ -35,23 +37,27 @@
   afterUpdate(() => {
     current_url = $page.url.href.split('/').pop();
   });
-
-  let isMenu = false;
-  const openMenu = () => {
-    isMenu = !isMenu;
-  };
 </script>
 
 <!-- Start of Nav Bar -->
-
 <nav
-  class="fixed left-0 top-0 z-20 w-full border-b border-gray-200 bg-white dark:border-gray-600 dark:bg-gray-900 md:h-[10vh]"
+  class="fixed left-0 top-0 h-fit w-full border-b dark:border-gray-600 dark:bg-gray-900"
 >
   <div
-    class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
+    class="relative mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
   >
     <a href="/" class="element flex items-center">
       <Logo />
+    </a>
+
+    <a
+      href="/Search"
+      class:actives={$page.url.pathname === '/Search'}
+      class="group flex items-center px-20 text-2xl text-white"
+    >
+      Search <i
+        class="fa-solid fa-magnifying-glass px-2 opacity-10 group-hover:opacity-100"
+      />
     </a>
 
     <span
@@ -62,23 +68,18 @@
       role="button"
     >
       <i
-        class="fa-solid fa-fill-drip fa-2x hover:animate-wiggle"
+        class="fa-solid fa-fill-drip fa-2x text-white hover:animate-wiggle"
         style="transform: rotate({$animatedRotation}deg) scale({$animatedScale});"
       />
     </span>
 
     <div class="flex md:order-2">
-      <button
-        on:click={openMenu}
-        data-collapse-toggle="navbar-sticky"
-        type="button"
+      <a
+        href="/Search"
         class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
-        aria-controls="navbar-sticky"
-        aria-expanded="false"
       >
-        <span class="sr-only">Open main menu</span>
-        <i class="fa-solid fa-bars" />
-      </button>
+        <i class="fa-solid fa-magnifying-glass fa-2x" />
+      </a>
     </div>
   </div>
 </nav>
@@ -96,5 +97,16 @@
     text-decoration: none;
     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
     -webkit-tap-highlight-color: transparent !important;
+  }
+  .actives {
+    background-color: white;
+    padding: 0 2rem;
+    border-radius: 0.5rem;
+    color: black;
+  }
+
+  .actives:hover {
+    color: black;
+    background-color: white;
   }
 </style>

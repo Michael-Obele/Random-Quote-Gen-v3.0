@@ -9,8 +9,6 @@
   $: textLoad = '';
   $: more = '';
 
-  afterUpdate(() => {});
-
   $: number = 3;
   let setCounter;
   let searchBy;
@@ -101,7 +99,8 @@
       name="quoteLimit"
       min="1"
       max="20"
-      bind:value={number} />
+      bind:value={number}
+    />
 
     {#await promise}
       <p>...waiting</p>
@@ -129,10 +128,12 @@
     Search By:
   </h3>
   <ul
-    class="mx-auto w-[90vw] items-center rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:flex md:w-[70vw]">
+    class="mx-auto w-[90vw] items-center rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:flex md:w-[70vw]"
+  >
     {#each ['Author', 'Text', 'Tag(s)'] as item}
       <li
-        class="w-full border-b border-gray-200 dark:border-gray-600 sm:border-b-0 sm:border-r">
+        class="w-full border-b border-gray-200 dark:border-gray-600 sm:border-b-0 sm:border-r"
+      >
         <div class="flex items-center pl-3">
           <input
             id={item}
@@ -140,7 +141,8 @@
             value={item}
             bind:group={searchType}
             name="search"
-            class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700" />
+            class="h-4 w-4 border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700"
+          />
           <label
             for={item}
             class="ml-2 w-full py-3 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -157,22 +159,26 @@
     <label
       for="search"
       class="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >Search</label>
+      >Search</label
+    >
     <div class="relative">
       <div
-        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+      >
         <svg
           class="h-4 w-4 text-gray-500 dark:text-gray-400"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          viewBox="0 0 20 20">
+          viewBox="0 0 20 20"
+        >
           <path
             stroke="currentColor"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          />
         </svg>
       </div>
       <input
@@ -181,20 +187,24 @@
         bind:value={searchText}
         class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
         placeholder="Search For Quotes..."
-        required />
+        required
+      />
       <button
         type="submit"
         on:click={search}
         class="absolute bottom-2.5 right-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >Search</button>
+        >Search</button
+      >
     </div>
   </form>
   <!-- Loading -->
   {#if textLoad}
     <ul
-      class="mx-auto w-[90vw] rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[70vw]">
+      class="mx-auto w-[90vw] rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[70vw]"
+    >
       <li
-        class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600">
+        class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600"
+      >
         <h1>{textLoad}</h1>
       </li>
     </ul>
@@ -202,10 +212,12 @@
   <!-- Result -->
   {#if value.length}
     <ul
-      class="mx-auto w-[90vw] rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[70vw]">
+      class="mx-auto w-[90vw] rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[70vw]"
+    >
       {#each value as val}
         <li
-          class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600">
+          class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600"
+        >
           <h1>{val.author}</h1>
           <cite>({val.tags})</cite>
           <p>- {val.content}</p>
@@ -213,7 +225,8 @@
       {/each}
       {#if more}
         <li
-          class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600">
+          class="w-full border-b border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600"
+        >
           {more}
         </li>
       {/if}

@@ -13,7 +13,7 @@
   style="background-color:{$background}"
 >
   <Navbar />
-  <div class="invisible-scrollbar pb-52">
+  <div class="container mx-auto min-h-screen pb-52">
     <slot />
   </div>
   <Footer />

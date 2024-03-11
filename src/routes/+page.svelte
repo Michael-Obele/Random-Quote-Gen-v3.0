@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { background, DarkColors } from '$lib/store';
   import Download from '$lib/logos/download.svelte';
   import Copy from '$lib/logos/copy.svelte';
@@ -10,11 +10,9 @@
   let quoteText = '';
   let typing = false;
   let copied = false;
+  let saving = false;
 
-  /**
-   * @param {string} text
-   */
-  function typeText(text) {
+  function typeText(text: string) {
     let index = 0;
     const interval = setInterval(() => {
       if (index <= text.length) {
@@ -69,7 +67,7 @@
   }
 
   async function saveQuoteImage() {
-    const cardElement = document.getElementById('card'); // Assuming card has class 'card'
+    const cardElement = document.getElementById('card');
     if (!cardElement) return; // Handle potential missing element
 
     const imageData = await domtoimage.toPng(cardElement, { quality: 0.98 });
@@ -77,7 +75,7 @@
     img.src = imageData;
     var link = document.createElement('a');
     link.href = img.src;
-    link.download = 'my-quote.png';
+    link.download = `quote_${Math.floor(Math.random() * 10000)}.png`;
     link.click();
   }
 </script>
@@ -122,7 +120,7 @@
     isLoading={true}
   />
 {/await}
-<div class:hidden={!copied} class="mx-auto mt-5 max-w-md">
+<div class:hidden={!copied} class="mx-auto mt-5 max-w-fit md:max-w-sm">
   <div
     class="mx-auto mb-4 flex max-w-xs items-center rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400 md:max-w-md"
     role="alert"
