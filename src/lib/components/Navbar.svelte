@@ -53,10 +53,10 @@
     <a
       href="/Search"
       class:actives={$page.url.pathname === '/Search'}
-      class="group flex items-center px-20 text-2xl text-white"
+      class="group hidden items-center px-20 text-2xl text-white md:flex"
     >
       Search <i
-        class="fa-solid fa-magnifying-glass px-2 opacity-10 group-hover:opacity-100"
+        class="fa-solid fa-magnifying-glass px-2 opacity-40 group-hover:opacity-100"
       />
     </a>
 
