@@ -41,7 +41,7 @@
 
 <!-- Start of Nav Bar -->
 <nav
-  class="fixed left-0 top-0 h-fit w-full border-b dark:border-gray-600 dark:bg-gray-900"
+  class="fixed left-0 top-0 z-50 h-fit w-full border-b dark:border-gray-600 dark:bg-gray-900"
 >
   <div
     class="relative mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
@@ -52,14 +52,27 @@
 
     <a
       href="/Search"
-      class:actives={$page.url.pathname === '/Search'}
-      class="group hidden items-center px-20 text-2xl text-white md:flex"
+      class:hidden={$page.url.pathname === '/Search'}
+      class="group order-last inline-flex items-center text-2xl text-white md:order-none"
     >
-      Search <i
-        class="fa-solid fa-magnifying-glass px-2 opacity-40 group-hover:opacity-100"
+      <span class="hidden md:inline"> Search </span>
+      <i
+        class="fa-solid fa-magnifying-glass px-2 opacity-100 md:opacity-40 md:group-hover:opacity-100"
       />
     </a>
-
+    <!-- Active Search -->
+    <a
+      href="/Search"
+      class:inline-flex={$page.url.pathname === '/Search'}
+      class:hidden={$page.url.pathname !== '/Search'}
+      class="group order-last hidden items-center rounded-lg bg-white text-2xl text-black md:order-none"
+    >
+      <span class="hidden px-4 md:inline"> Search </span>
+      <i
+        class="fa-solid fa-magnifying-glass p-2 opacity-100 md:opacity-40 md:group-hover:opacity-100"
+      />
+    </a>
+    <!-- End of Active Search -->
     <span
       class="element flex hover:cursor-pointer md:order-3"
       on:keydown={ChangeColor}
@@ -68,20 +81,10 @@
       role="button"
     >
       <i
-        class="fa-solid fa-fill-drip fa-2x text-white hover:animate-wiggle"
+        class="fa-solid fa-fill-drip fa-2x text-white md:hover:animate-wiggle"
         style="transform: rotate({$animatedRotation}deg) scale({$animatedScale});"
       />
     </span>
-
-    <div class="flex md:order-2">
-      <a
-        href="/Search"
-        class:actives={$page.url.pathname === '/Search'}
-        class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
-      >
-        <i class="fa-solid fa-magnifying-glass fa-2x" />
-      </a>
-    </div>
   </div>
 </nav>
 
@@ -98,16 +101,5 @@
     text-decoration: none;
     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
     -webkit-tap-highlight-color: transparent !important;
-  }
-  .actives {
-    background-color: white;
-    padding: 0 2rem;
-    border-radius: 0.5rem;
-    color: black;
-  }
-
-  .actives:hover {
-    color: black;
-    background-color: white;
   }
 </style>

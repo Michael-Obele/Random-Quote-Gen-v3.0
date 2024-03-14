@@ -1,8 +1,9 @@
 <script>
+  import { page } from '$app/stores';
 </script>
 
 <footer
-  class="absolute bottom-0 z-50 flex w-full flex-row justify-between space-x-6 bg-gray-800 py-5"
+  class="absolute bottom-0 z-50 flex w-full flex-row justify-between bg-gray-800 py-5"
 >
   <span />
   <h3 class="font-bold capitalize text-white">
@@ -15,7 +16,25 @@
 
   <a
     href="/About"
-    class="ms-5 px-4 font-bold capitalize text-white hover:text-[#A5CCFF] md:ms-0"
-    >About</a
+    class:hidden={$page.url.pathname === '/About'}
+    class="group mx-3 inline-flex items-center text-2xl text-white md:order-none"
   >
+    <span class="hidden md:inline"> About </span>
+    <i
+      class="fa-solid fa-circle-info px-2 opacity-100 md:opacity-40 md:group-hover:opacity-100"
+    />
+  </a>
+  <!-- Active About -->
+  <a
+    href="/About"
+    class:inline-flex={$page.url.pathname === '/About'}
+    class:hidden={$page.url.pathname !== '/About'}
+    class="group mx-3 hidden items-center rounded-lg bg-white text-2xl text-black md:order-none"
+  >
+    <span class="hidden px-4 md:inline"> About </span>
+    <i
+      class="fa-solid fa-circle-info p-2 opacity-100 md:opacity-40 md:group-hover:opacity-100"
+    />
+  </a>
+  <!-- End of Active About -->
 </footer>

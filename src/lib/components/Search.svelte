@@ -6,7 +6,7 @@
   let searchType = 'Author';
   let dropdown = false;
 
-  $: value = [] as any;
+  $: value = [] as unknown as String;
   $: textLoad = '';
   $: more = '';
 
@@ -45,7 +45,6 @@
     }
   }
   function search() {
-    value = [];
     textLoad = 'Please Wait...';
     more = '';
     searchBy = searchQuote(searchText, searchType);

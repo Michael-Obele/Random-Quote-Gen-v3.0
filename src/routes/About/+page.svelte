@@ -7,30 +7,32 @@
 <div
   class="px[20px] container mx-auto h-fit min-h-screen px-6 py-10 pb-5 pt-[5vh] text-white md:pb-1 md:pt-0"
 >
-  <h1
-    class="text-3xl font-semibold capitalize leading-loose text-white md:text-5xl md:leading-normal"
+  <h3
+    class="mb-4 text-3xl font-semibold capitalize leading-normal text-white md:text-5xl"
   >
     Unleash the Power of <br /> Words with Our
     <span class="underline decoration-[#A5CCFF] decoration-4"
       >Random Quote Generator App!</span
     >
-  </h1>
+  </h3>
 
-  <h2 class="mt-4 text-3xl leading-normal dark:text-white xl:mt-6">
+  <h3
+    class="mt-4 text-xl leading-normal opacity-75 dark:text-white md:text-2xl xl:mt-6"
+  >
     In today's fast-paced world, inspiration can be hard to come by. We, at
     Happy Quotes, believe that the right words can spark creativity, ignite
     motivation, and offer a fresh perspective. That's why we've developed a
     powerful and versatile <b>Random Quote Generator App</b>. <br />
     This app goes beyond simply presenting random quotes. It empowers you to:
-  </h2>
+  </h3>
   <main class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-12 xl:gap-12">
     <Card
       title="Find Inspiration"
-      body=" Search through our vast database of quotes by keyword, author, or theme. Discover hidden gems or revisit old favorites to fuel your next project or simply brighten your day."
+      body=" Search through our vast database of quotes by keyword, author, or tag. Discover hidden gems or revisit old favorites to fuel your next project or simply brighten your day."
     />
     <Card
       title="Visualize Inspiration"
-      body="Transform your chosen quote into a beautiful image.  Unleash your inner designer and create a visually stunning and shareable masterpiece. Play around with different fonts, backgrounds, and colors to perfectly match the quote's essence and your personal style. Download the image and use it as wallpaper, social media content, or a printed reminder."
+      body="Transform your chosen quote into a beautiful image.  Unleash your inner designer and create a visually stunning and shareable masterpiece. Play around with different colors to perfectly match the quote's essence and your personal style. Download the image and use it as social media content, or a printed reminder."
     />
     <Card
       title="Capture Inspiration"
@@ -47,7 +49,7 @@
       class="mb-6 text-center text-2xl font-semibold capitalize text-gray-800 dark:text-white lg:text-3xl"
     >
       Our Random Quote Generator App <br /> is the perfect
-      <span class="text-[#A5CCFF]"> companion </span>for:
+      <span class="font-bold text-slate-300"> companion </span>for:
     </h1>
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       <Simple
