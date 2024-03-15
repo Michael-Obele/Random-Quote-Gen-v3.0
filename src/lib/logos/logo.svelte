@@ -76,9 +76,9 @@
   .quote-1 {
     -webkit-animation: animate-svg-stroke-1 1.1s
         cubic-bezier(0.6, 0.04, 0.98, 0.335) 0s both,
-      animate-svg-fill-1 1.2s cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.2s both;
+      animate-svg-fill-1 1.9s cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.2s both;
     animation: animate-svg-stroke-1 1.1s cubic-bezier(0.6, 0.04, 0.98, 0.335) 0s
         both,
-      animate-svg-fill-1 1.2s cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.2s both;
+      animate-svg-fill-1 1.6s cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.2s both;
   }
 </style>

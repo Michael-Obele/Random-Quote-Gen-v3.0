@@ -1,0 +1,42 @@
+# Build files
+node_modules/
+dist/
+
+# Editor stuff
+.vscode/
+
+# Testing
+*.test.js
+*.spec.js
+
+# Misc
+.DS_Store
+package-lock.json
+
+# Specific to Svelte
+.svelte-kit/
+**/__sapper__*
+**/node_modules/
+package
+
+# Add your specific test code file here
+.testcode.md
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
