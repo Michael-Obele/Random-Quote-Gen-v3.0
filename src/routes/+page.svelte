@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Info from './Info.svelte';
+
   import { background, DarkColors } from '$lib/store';
   import Download from '$lib/logos/download.svelte';
   import Copy from '$lib/logos/copy.svelte';
@@ -69,7 +71,7 @@
   async function saveQuoteImage() {
     const cardElement = document.getElementById('card');
     if (!cardElement) return; // Handle potential missing element
-
+    saving = true;
     const imageData = await domtoimage.toPng(cardElement, { scale: 0.5 });
     var img = new Image();
     img.src = imageData;
@@ -77,6 +79,7 @@
     link.href = img.src;
     link.download = `quote_${Math.floor(Math.random() * 10000)}.png`;
     link.click();
+    saving = false;
   }
 </script>
 
@@ -121,24 +124,10 @@
   />
 {/await}
 <div class:hidden={!copied} class="mx-auto mt-5 max-w-fit md:max-w-sm">
-  <div
-    class="mx-auto mb-4 flex max-w-xs items-center rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400 md:max-w-md"
-    role="alert"
-  >
-    <svg
-      class="me-3 inline h-4 w-4 flex-shrink-0"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-    >
-      <path
-        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
-      />
-    </svg>
-    <span class="sr-only">Info</span>
-    <div>
-      <span class="font-medium">Success!</span> Quote Copied!
-    </div>
-  </div>
+  <Info text={'Copying'} />
+</div>
+<div class:hidden={!saving} class="mx-auto mt-5 max-w-fit md:max-w-sm">
+  <Info>
+    <span class="font-medium">Please Wait!</span> Quote is Saving!
+  </Info>
 </div>
