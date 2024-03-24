@@ -3,7 +3,7 @@
 </script>
 
 <footer
-  class="absolute bottom-0 z-50 flex w-full flex-row justify-between bg-gray-800 py-5"
+  class="absolute bottom-0 z-20 flex w-full flex-row justify-between bg-gray-800 py-5"
 >
   <span />
   <h3 class="font-bold capitalize text-white">
