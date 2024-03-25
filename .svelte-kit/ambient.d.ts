@@ -43,6 +43,7 @@ declare module '$env/static/private' {
 	export const DESKTOP_SESSION: string;
 	export const SSH_AGENT_PID: string;
 	export const GTK_MODULES: string;
+	export const DBUS_STARTER_BUS_TYPE: string;
 	export const PWD: string;
 	export const XDG_SESSION_DESKTOP: string;
 	export const LOGNAME: string;
@@ -51,7 +52,6 @@ declare module '$env/static/private' {
 	export const _: string;
 	export const XAUTHORITY: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
-	export const GJS_DEBUG_TOPICS: string;
 	export const WINDOWPATH: string;
 	export const HOME: string;
 	export const USERNAME: string;
@@ -64,7 +64,6 @@ declare module '$env/static/private' {
 	export const INVOCATION_ID: string;
 	export const MANAGERPID: string;
 	export const CHROME_DESKTOP: string;
-	export const GJS_DEBUG_OUTPUT: string;
 	export const NVM_DIR: string;
 	export const LESSCLOSE: string;
 	export const XDG_SESSION_CLASS: string;
@@ -77,6 +76,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_event: string;
 	export const SHLVL: string;
 	export const QT_IM_MODULE: string;
+	export const DBUS_STARTER_ADDRESS: string;
 	export const npm_config_user_agent: string;
 	export const npm_execpath: string;
 	export const XDG_RUNTIME_DIR: string;
@@ -142,6 +142,7 @@ declare module '$env/dynamic/private' {
 		DESKTOP_SESSION: string;
 		SSH_AGENT_PID: string;
 		GTK_MODULES: string;
+		DBUS_STARTER_BUS_TYPE: string;
 		PWD: string;
 		XDG_SESSION_DESKTOP: string;
 		LOGNAME: string;
@@ -150,7 +151,6 @@ declare module '$env/dynamic/private' {
 		_: string;
 		XAUTHORITY: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
-		GJS_DEBUG_TOPICS: string;
 		WINDOWPATH: string;
 		HOME: string;
 		USERNAME: string;
@@ -163,7 +163,6 @@ declare module '$env/dynamic/private' {
 		INVOCATION_ID: string;
 		MANAGERPID: string;
 		CHROME_DESKTOP: string;
-		GJS_DEBUG_OUTPUT: string;
 		NVM_DIR: string;
 		LESSCLOSE: string;
 		XDG_SESSION_CLASS: string;
@@ -176,6 +175,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_event: string;
 		SHLVL: string;
 		QT_IM_MODULE: string;
+		DBUS_STARTER_ADDRESS: string;
 		npm_config_user_agent: string;
 		npm_execpath: string;
 		XDG_RUNTIME_DIR: string;
