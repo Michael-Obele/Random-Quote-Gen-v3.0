@@ -1,133 +1,73 @@
 <script lang="ts">
-  import Info from './Info.svelte';
+  import type { PageData } from './$types';
 
-  import { background, DarkColors } from '$lib/store';
-  import Download from '$lib/logos/download.svelte';
-  import Copy from '$lib/logos/copy.svelte';
-  import Card from '$lib/components/Card.svelte';
-  import domtoimage from 'dom-to-image';
+  export let data: PageData;
+  console.log(data);
 
-  let isLoading = true;
-  let loadingText = '...loading';
-  let quoteText = '';
-  let typing = false;
-  let copied = false;
-  let saving = false;
-
-  function typeText(text: string) {
-    let index = 0;
-    const interval = setInterval(() => {
-      if (index <= text.length) {
-        typing = true;
-        quoteText = text.substring(0, index);
-        index++;
-      } else {
-        typing = false;
-        clearInterval(interval);
-      }
-    }, 95);
-  }
-
-  if (isLoading) {
-    typeText(loadingText);
-  }
-
-  const quoteUrl = 'https://api.quotable.io/quotes/random';
-  let textToCopy = '';
-
-  let randomQuotePromise = fetchRandomQuote();
-
-  async function fetchRandomQuote() {
-    const response = await fetch(quoteUrl);
-    const quoteData = await response.json();
-    const quote = quoteData[0];
-    isLoading = false;
-    quoteText = quote.content;
-    typeText(quoteText);
-    const currentTime = new Date().toLocaleTimeString([], {
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: true,
-    });
-    textToCopy = `${quote.author} - ${quote.content}`;
-    quote.time = currentTime;
-    const colorIndex = Math.floor(Math.random() * DarkColors.length);
-    background.set(DarkColors[colorIndex]);
-    return quote;
-  }
-
-  function generateQuote() {
-    randomQuotePromise = fetchRandomQuote();
-  }
-
-  function copyToClipboard() {
-    navigator.clipboard.writeText(textToCopy);
-    copied = true;
-    setTimeout(() => {
-      copied = false;
-    }, 1500);
-  }
-
-  async function saveQuoteImage() {
-    const cardElement = document.getElementById('card');
-    if (!cardElement) return; // Handle potential missing element
-    saving = true;
-    const imageData = await domtoimage.toPng(cardElement, { scale: 0.5 });
-    var img = new Image();
-    img.src = imageData;
-    var link = document.createElement('a');
-    link.href = img.src;
-    link.download = `quote_${Math.floor(Math.random() * 10000)}.png`;
-    link.click();
-    saving = false;
-  }
+  $: ({ articles } = data);
 </script>
 
-{#await randomQuotePromise}
-  <Card title="Random Quote" body={quoteText} isLoading={true} />
-{:then quote}
-  <div id="card">
-    <Card
-      title={`${quote.author} - ${quote.tags}`}
-      isLoading={false}
-      body={quoteText}
-    >
-      <div class="flex justify-center space-x-5">
+<div class="container mx-auto px-4 py-8">
+  <h2 class="mb-4 text-2xl font-bold">Articles:</h2>
+  {#each articles as article}
+    <article class="mb-8 rounded-md bg-slate-400 p-4 shadow-md">
+      <header class="mb-2 text-xl font-semibold">{article.title}</header>
+      <p class="text-gray-700">
+        {article.content}
+      </p>
+      <form action="?/deleteArticle&id={article.id}" method="POST" class="mt-4">
         <button
-          style="background-color:{$background}"
-          class="rounded-full px-16 py-2 text-lg capitalize text-white md:px-20 md:text-xl"
-          on:click={generateQuote}>Random</button
+          type="submit"
+          class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+          >Delete Article</button
         >
-        <button
-          style="background-color:{$background + '6b'}"
-          class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
-          on:click={saveQuoteImage}
-          disabled={typing}
-        >
-          <Download />
-        </button>
-        <button
-          style="background-color:{$background + '6b'}"
-          class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
-          on:click={copyToClipboard}
-        >
-          <Copy />
-        </button>
-      </div>
-    </Card>
-  </div>
-{:catch error}
-  <Card
-    title={`Error`}
-    body={`Something went wrong: ${error.message}`}
-    isLoading={true}
-  />
-{/await}
-<div class:hidden={!copied} class="mx-auto mt-5 max-w-fit md:max-w-sm">
-  <Info text={'Copying'} />
+      </form>
+      <a
+        href="/{article.id}"
+        role="button"
+        class="mt-4 block w-full rounded bg-blue-500 px-4 py-2 text-center font-bold text-white hover:bg-blue-700"
+        >Edit Article</a
+      >
+    </article>
+  {/each}
 </div>
-<div class:hidden={!saving} class="mx-auto mt-5 max-w-fit md:max-w-sm">
-  <Info>
-    <span class="font-medium">Please Wait!</span> Quote is Saving!
-  </Info>
+
+<div class="flex min-h-screen flex-col items-center justify-center">
+  <form
+    action="?/createArticle"
+    method="POST"
+    class="mb-4 rounded bg-gray-500 px-8 pb-8 pt-6 shadow-md"
+  >
+    <h3 class="mb-4 text-center text-2xl font-bold">New Article</h3>
+    <div class="mb-4">
+      <label class="mb-2 block text-sm font-bold text-gray-700" for="title">
+        Title
+      </label>
+      <input
+        class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+        type="text"
+        id="title"
+        name="title"
+      />
+    </div>
+    <div class="mb-6">
+      <label class="mb-2 block text-sm font-bold text-gray-700" for="content">
+        Content
+      </label>
+      <textarea
+        class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+        id="content"
+        name="content"
+        rows="5"
+      />
+    </div>
+    <div class="flex items-center justify-between">
+      <button
+        class="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+        type="submit"
+      >
+        Add Article
+      </button>
+    </div>
+  </form>
 </div>
