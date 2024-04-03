@@ -16,9 +16,7 @@
 </script>
 
 <h3 class="my-4 text-center text-3xl md:my-10">
-  <a href="/{author[0].name}">
-    {author[0].name}
-  </a>
+  {author[0].name}
 </h3>
 <hr
   class="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10"

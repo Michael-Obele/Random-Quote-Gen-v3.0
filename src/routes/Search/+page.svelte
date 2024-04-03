@@ -92,12 +92,12 @@
           >
             <div class="block">
               <div class="mr-3 w-full text-lg font-semibold">
-                <span class="group relative">
-                  <i class="fa-solid fa-circle-info pr-2" />
+                <span class="relative w-3">
+                  <i class="fa-solid fa-circle-info group peer pr-2" />
                   <div
                     id="tooltip-default"
                     role="tooltip"
-                    class="tooltip absolute -right-4 bottom-8 z-10 inline-block w-32 rounded-lg bg-black px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 group-hover:opacity-100"
+                    class="tooltip absolute -right-4 bottom-8 z-10 inline-block w-32 rounded-lg bg-black px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 peer-hover:opacity-100"
                   >
                     {searchItems[item].info}
                   </div>
@@ -150,9 +150,7 @@
     <ul
       class="mx-auto mt-5 w-[90vw] rounded-3xl border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[60vw]"
     >
-      <li
-        class="w-full border-gray-200 px-4 py-2 hover:bg-gray-100 hover:text-blue-700 dark:border-gray-600"
-      >
+      <li class="w-full border-gray-200 px-4 py-2 text-lg dark:border-gray-600">
         <h1>{textLoad}</h1>
       </li>
     </ul>
@@ -164,7 +162,12 @@
     >
       {#each value as val}
         <li class="w-full border-gray-200 px-4 py-2 dark:border-gray-600">
-          <h1>{val.author} <cite>({val.tags})</cite></h1>
+          <a
+            class="text-lg"
+            href="/{val.author}"
+            on:click={() => (window.location.href = `/${val.author}`)}
+            >{val.author} <cite>({val.tags})</cite></a
+          >
           <p>
             - {val.content}
             <button

@@ -25,7 +25,6 @@
   } else if (data.result.results.length === 1) {
     author = data.result.results;
   }
-  console.log(data);
 </script>
 
 <h1
