@@ -3,7 +3,7 @@
 </script>
 
 <div
-  class="mx-auto mb-4 flex max-w-xs items-center rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400 md:max-w-md"
+  class="mx-auto mb-4 flex max-w-xs items-center rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-black dark:text-green-400 md:max-w-md"
   role="alert"
 >
   <svg

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Info from './Info.svelte';
+  import Info from '$lib/Info.svelte';
 
-  import { background, DarkColors } from '$lib/store';
+  import { dynamicColor, DarkColors } from '$lib/store';
   import Download from '$lib/logos/download.svelte';
   import Copy from '$lib/logos/copy.svelte';
   import Card from '$lib/components/Card.svelte';
@@ -44,15 +44,9 @@
     isLoading = false;
     quoteText = quote.content;
     typeText(quoteText);
-    const currentTime = new Date().toLocaleTimeString([], {
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: true,
-    });
     textToCopy = `${quote.author} - ${quote.content}`;
-    quote.time = currentTime;
     const colorIndex = Math.floor(Math.random() * DarkColors.length);
-    background.set(DarkColors[colorIndex]);
+    dynamicColor.set(DarkColors[colorIndex]);
     return quote;
   }
 
@@ -94,12 +88,12 @@
     >
       <div class="flex justify-center space-x-5">
         <button
-          style="background-color:{$background}"
+          style="background-color:{$dynamicColor}"
           class="rounded-full px-16 py-2 text-lg capitalize text-white md:px-20 md:text-xl"
           on:click={generateQuote}>Random</button
         >
         <button
-          style="background-color:{$background + '6b'}"
+          style="background-color:{$dynamicColor + '6b'}"
           class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
           on:click={saveQuoteImage}
           disabled={typing}
@@ -107,7 +101,7 @@
           <Download />
         </button>
         <button
-          style="background-color:{$background + '6b'}"
+          style="background-color:{$dynamicColor + '6b'}"
           class="ms-2 inline-flex items-center justify-center rounded-full px-3 text-white md:h-14 md:w-14 md:px-0"
           on:click={copyToClipboard}
         >
@@ -121,6 +115,7 @@
     title={`Error`}
     body={`Something went wrong: ${error.message}`}
     isLoading={true}
+    button="Error"
   />
 {/await}
 <div class:hidden={!copied} class="mx-auto mt-5 max-w-fit md:max-w-sm">

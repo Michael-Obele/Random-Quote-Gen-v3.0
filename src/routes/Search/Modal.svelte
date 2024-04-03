@@ -10,8 +10,9 @@
   import Quotation from '$lib/logos/quotation.svelte';
   import Copy from '$lib/logos/copy.svelte';
   import Download from '$lib/logos/download.svelte';
-  import { background } from '$lib/store';
+  import { dynamicColor } from '$lib/store';
   import domtoimage from 'dom-to-image';
+  import Info from '$lib/Info.svelte';
 
   let copied = false;
   let saving = false;
@@ -56,11 +57,12 @@
       From: "opacity-100"
       To: "opacity-0"
   -->
+
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 
   <div class="fixed inset-0 z-20 w-screen overflow-y-auto">
     <div
-      class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+      class="relative flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
     >
       <!--
         Modal panel, show/hide based on modal state.
@@ -75,6 +77,15 @@
       <div
         class="relative transform overflow-hidden rounded-lg transition-all sm:my-4 sm:w-full sm:max-w-lg"
       >
+        <div
+          class:hidden={!saving}
+          class="absolute right-1/4 top-10 z-[60] mx-auto mt-5 max-w-fit md:max-w-sm"
+        >
+          <Info>
+            <span class="font-medium">Please Wait!</span> Quote is Saving!
+          </Info>
+        </div>
+
         {#if selectedValue}
           <div
             id="card"
@@ -97,13 +108,13 @@
               <slot name="btn" />
               <button
                 on:click={saveQuoteImage}
-                style="background-color:{$background + '6b'}"
+                style="background-color:{$dynamicColor + '6b'}"
                 class="my-2 ms-2 inline-flex h-12 items-center justify-center rounded-3xl px-3 text-white md:my-0 md:h-14 md:w-14 md:px-0"
                 ><Download /></button
               >
               <button
                 on:click={copyToClipboard}
-                style="background-color:{$background + '6b'}"
+                style="background-color:{$dynamicColor + '6b'}"
                 class="my-2 ms-2 inline-flex h-12 items-center justify-center rounded-3xl px-3 text-white md:my-0 md:h-14 md:w-14 md:px-0"
               >
                 <Copy />

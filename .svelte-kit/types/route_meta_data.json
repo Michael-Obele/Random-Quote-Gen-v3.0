@@ -1,5 +1,9 @@
 {
 	"/": [],
 	"/About": [],
-	"/Search": []
+	"/Search": [],
+	"/[slug]": [
+		"src/routes/[slug]/+page.ts",
+		"src/routes/[slug]/+page.server.ts"
+	]
 }

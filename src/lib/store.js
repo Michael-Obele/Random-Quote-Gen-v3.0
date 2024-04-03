@@ -53,7 +53,7 @@ export const DarkColors = [
   '#ed33b9',
 ];
 
-export const background = writable(DarkColors[0]);
+export const dynamicColor = writable(DarkColors[0]);
 
 export let counter = writable(0);
 

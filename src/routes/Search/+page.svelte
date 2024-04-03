@@ -1,6 +1,6 @@
 <script lang="ts">
   import Modal from './Modal.svelte';
-  import { background } from '$lib/store';
+  import { dynamicColor } from '$lib/store';
 
   let value: any[] = [];
   $: textLoad = '';
@@ -180,7 +180,7 @@
             <span slot="btn">
               <button
                 on:click={() => (showModal = false)}
-                style="background-color:{$background}"
+                style="background-color:{$dynamicColor}"
                 class="rounded-2xl px-16 py-4 text-lg capitalize text-white md:px-20 md:text-xl"
                 >Close</button
               >
@@ -196,12 +196,3 @@
     </ul>
   {/if}
 </div>
-
-<style>
-  .tooltip-arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-  }
-</style>
