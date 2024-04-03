@@ -163,20 +163,22 @@
       {#each value as val}
         <li class="w-full border-gray-200 px-4 py-2 dark:border-gray-600">
           <a
-            class="text-lg"
+            class="text-md after:content-['_↗']"
             href="/{val.author}"
             on:click={() => (window.location.href = `/${val.author}`)}
             >{val.author} <cite>({val.tags})</cite></a
           >
           <p>
             - {val.content}
+
             <button
               on:click={() => {
                 showModal = !showModal;
                 selectedValue = val;
               }}
-              class="fa-solid fa-eye px-2 hover:cursor-pointer"
-            />
+              class="me-2 rounded bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300"
+              >View</button
+            >
           </p>
 
           <Modal {selectedValue} {showModal}>

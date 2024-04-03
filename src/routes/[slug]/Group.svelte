@@ -39,7 +39,7 @@
   <span class="text-xl">
     <p>
       <span class="font-extrabold"> Link: </span>
-      <a href={item.link} class="text-lg">
+      <a href={item.link} class="text-lg after:content-['_↗']">
         Wiki of
         <span class="font-semibold">
           {item.name}

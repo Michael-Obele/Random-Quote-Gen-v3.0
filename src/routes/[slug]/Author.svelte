@@ -24,7 +24,7 @@
 <span class="text-xl">
   <p>
     <span class="font-extrabold"> Link: </span>
-    <a href={author[0].link} class="text-lg">
+    <a href={author[0].link} class="after:content-['_↗'] text-lg">
       Wiki of
       <span class="font-semibold">
         {author[0].name}
