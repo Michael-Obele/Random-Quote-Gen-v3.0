@@ -25,7 +25,10 @@
     class="mx-auto my-4 h-1 w-48 rounded border-0 bg-gray-100 dark:bg-gray-700 md:my-10"
   />
 
-  <h3 data-sveltekit-preload-data="false" class="text-center text-3xl">
+  <h3
+    data-sveltekit-preload-data="false"
+    class="text-center text-3xl after:content-['_↗']"
+  >
     <a
       href="/${item.name}"
       on:click={() => (window.location.href = `/${item.name}`)}
@@ -53,7 +56,7 @@
     {item.description}
   </p>
 
-  <div class="my-10">
+  <div class="my-10 hidden">
     <h3 class="text-center text-2xl font-semibold">Bio:</h3>
 
     <blockquote

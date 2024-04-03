@@ -51,7 +51,7 @@
     value = result.results;
     textLoad = result.count === 0 ? 'No Result' : '';
     more =
-      result.totalCount > result.count ? 'The is the first 100 results.' : '';
+      result.totalCount > result.count ? 'This is the first 100 results.' : '';
     return result;
   }
 
@@ -68,7 +68,7 @@
   <h1
     class="mb-6 text-center text-3xl font-semibold text-gray-900 dark:text-white md:text-4xl"
   >
-    Generate Quote By Searching...
+    Generate Quote By Searching By...
   </h1>
 
   <div class="">
