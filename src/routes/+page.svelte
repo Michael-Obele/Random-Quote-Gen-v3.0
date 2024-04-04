@@ -1,7 +1,7 @@
 <script lang="ts">
   import Info from '$lib/Info.svelte';
 
-  import { dynamicColor, DarkColors } from '$lib/store';
+  import { dynamicColor, darkTextColors } from '$lib/store';
   import Download from '$lib/logos/download.svelte';
   import Copy from '$lib/logos/copy.svelte';
   import Card from '$lib/components/Card.svelte';
@@ -45,8 +45,8 @@
     quoteText = quote.content;
     typeText(quoteText);
     textToCopy = `${quote.author} - ${quote.content}`;
-    const colorIndex = Math.floor(Math.random() * DarkColors.length);
-    dynamicColor.set(DarkColors[colorIndex]);
+    const colorIndex = Math.floor(Math.random() * darkTextColors.length);
+    dynamicColor.set(darkTextColors[colorIndex]);
     return quote;
   }
 

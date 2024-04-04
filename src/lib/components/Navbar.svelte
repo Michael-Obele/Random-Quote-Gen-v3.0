@@ -5,7 +5,7 @@
   import { Button } from '$lib/components/ui/button/index.js';
   import Logo from '$lib/logos/logo.svelte';
   import { spring } from 'svelte/motion';
-  import { dynamicColor, counter, DarkColors } from '$lib/store';
+  import { dynamicColor, counter, darkTextColors } from '$lib/store';
   import { page } from '$app/stores';
   import { afterUpdate } from 'svelte';
 
@@ -16,7 +16,7 @@
   $: setCounter = 0;
 
   export function ChangeColor() {
-    setCounter = Math.floor(Math.random() * DarkColors.length);
+    setCounter = Math.floor(Math.random() * darkTextColors.length);
     counter.set(setCounter);
     isAnimated = true;
     rotation = 45;
@@ -24,7 +24,7 @@
 
     // Reset the animation after a delay
     setTimeout(() => {
-      dynamicColor.set(DarkColors[setCounter]);
+      dynamicColor.set(darkTextColors[setCounter]);
       isAnimated = false;
       rotation = 0;
       scale = 1;

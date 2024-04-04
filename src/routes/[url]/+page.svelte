@@ -1,6 +1,6 @@
 <script lang="ts">
   import Group from './Group.svelte';
-
+  import { page } from '$app/stores';
   import Author from './Author.svelte';
   import { dynamicColor } from '$lib/store';
 
@@ -32,17 +32,15 @@
 >
   Welcome to the Search Page for <q
     style="color:{$dynamicColor}"
-    class="font-bold"
+    class="rounded-md bg-slate-200 p-2 font-bold"
   >
-    {data.slug}
+    {data.url}
   </q>
 </h1>
 <main>
-  {#if group.length > 0}
+  {#if data.result.count > 1}
     <Group {group} />
   {:else if author.length > 0}
     <Author {author} />
-  {:else}
-    <p class="my-2 text-center text-2xl text-white">No Page like this exists</p>
   {/if}
 </main>

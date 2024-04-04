@@ -2,8 +2,11 @@
 	"/": [],
 	"/About": [],
 	"/Search": [],
-	"/[slug]": [
-		"src/routes/[slug]/+page.ts",
-		"src/routes/[slug]/+page.server.ts"
+	"/[url]": [
+		"src/routes/[url]/+page.ts",
+		"src/routes/[url]/+page.server.ts"
+	],
+	"/[url]/quote": [
+		"src/routes/[url]/quote/+page.ts"
 	]
 }

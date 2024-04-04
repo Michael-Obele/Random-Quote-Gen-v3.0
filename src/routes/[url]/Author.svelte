@@ -24,7 +24,11 @@
 <span class="text-xl">
   <p>
     <span class="font-extrabold"> Link: </span>
-    <a href={author[0].link} class="after:content-['_↗'] text-lg">
+    <a
+      target="_blank"
+      href={author[0].link}
+      class="text-lg after:content-['_↗']"
+    >
       Wiki of
       <span class="font-semibold">
         {author[0].name}
@@ -50,27 +54,7 @@
     </p>
   </blockquote>
 </div>
-<p>
+<a target="_blank" data-sveltekit-reload href="/{author[0].name}/quote">
   <span class="mx-1 font-semibold"> Quote Count: </span>
   {author[0].quoteCount}
-</p>
-
-<!-- 
-## Albert Einstein ([center])  **(Consider using a larger font size and bold font style for the name)**
-
-**Link:** [Albert Einstein](https://en.wikipedia.org/wiki/Albert_Einstein)  **(Consider using a slightly smaller font size and underline decoration for the link)**
-
-**Description:** Theoretical physicist  **(Text alignment: Left, Font style: Consider italics)**
-
-**Bio:**
-
-> Albert Einstein (14 March 1879 – 18 April 1955) was a German-born theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics). His work is also known for its influence on the philosophy of science.  **(Consider using a slightly smaller font size and indented text for the quote)**
-
-**Quote Count:** 50  **(Text alignment: Left)**
-
-**Date Added:** 2019-07-03  **(Text alignment: Left)**
-
-**Date Modified:** 2023-04-06  **(Text alignment: Left)**
-
-
- -->
+</a>
