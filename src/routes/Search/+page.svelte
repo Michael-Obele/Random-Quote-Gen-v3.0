@@ -160,14 +160,17 @@
     <ul
       class="mx-auto mt-5 w-[90vw] rounded-3xl border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white md:w-[60vw]"
     >
-      {#each value as val}
-        <li class="w-full border-gray-200 px-4 py-2 dark:border-gray-600">
+      {#each value as val, i}
+        <li
+          class:border-b={i !== value.length - 1}
+          class="w-full border-b border-gray-200 px-4 py-2 dark:border-gray-600"
+        >
           <a
             class="text-md after:content-['_↗']"
             href="/{val.author}"
             on:click={() => (window.location.href = `/${val.author}`)}
-            >{val.author} <cite>({val.tags})</cite></a
-          >
+            >{val.author}</a
+          > <cite>({val.tags})</cite>
           <p>
             - {val.content}
 
@@ -194,7 +197,9 @@
         </li>
       {/each}
       {#if more}
-        <li class="w-full border-gray-200 px-4 py-2 dark:border-gray-600">
+        <li
+          class="w-full border-t border-gray-200 px-4 py-2 dark:border-gray-600"
+        >
           {more}
         </li>
       {/if}
