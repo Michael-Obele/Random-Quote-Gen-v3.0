@@ -25,6 +25,7 @@
   <p>
     <span class="font-extrabold"> Link: </span>
     <a
+      rel="noopener noreferrer"
       target="_blank"
       href={author[0].link}
       class="text-lg after:content-['_↗']"
@@ -54,7 +55,12 @@
     </p>
   </blockquote>
 </div>
-<a target="_blank" data-sveltekit-reload href="/{author[0].name}/quote">
+<a
+  target="_blank"
+  rel="noopener noreferrer"
+  data-sveltekit-reload
+  href="/{author[0].name}/quote"
+>
   <span class="mx-1 font-semibold"> Quote Count: </span>
   {author[0].quoteCount}
 </a>

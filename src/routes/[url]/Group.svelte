@@ -39,6 +39,7 @@
         <span class="font-extrabold"> Link: </span>
         <a
           target="_blank"
+          rel="noopener noreferrer"
           href={item.link}
           class="text-lg after:content-['_↗']"
         >
@@ -55,7 +56,12 @@
       {item.description}
     </p>
 
-    <a target="_blank" data-sveltekit-reload href="/{item.name}/quote">
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      data-sveltekit-reload
+      href="/{item.name}/quote"
+    >
       <span class="mx-1 font-semibold"> Quote Count: </span>
       {item.quoteCount}
     </a>
