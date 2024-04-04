@@ -163,7 +163,7 @@
       {#each value as val, i}
         <li
           class:border-b={i !== value.length - 1}
-          class="w-full border-b border-gray-200 px-4 py-2 dark:border-gray-600"
+          class="w-full border-gray-200 px-4 py-2 dark:border-gray-600"
         >
           <a
             class="text-md after:content-['_↗']"
