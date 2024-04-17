@@ -14,7 +14,7 @@ dist/
 package-lock.json
 
 # Specific to Svelte
-.svelte-kit/
+.svelte-kit/*
 **/__sapper__*
 **/node_modules/
 package
