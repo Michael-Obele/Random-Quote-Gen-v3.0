@@ -59,7 +59,7 @@
   target="_blank"
   rel="noopener noreferrer"
   data-sveltekit-reload
-  href="/{author[0].name}/quote"
+  href="{author[0].name}/quote"
 >
   <span class="mx-1 font-semibold"> Quote Count: </span>
   {author[0].quoteCount}

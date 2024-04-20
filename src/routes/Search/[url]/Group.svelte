@@ -26,7 +26,7 @@
     style="background-color: {$dynamicColor};"
     class="mx-auto mt-10 w-fit rounded bg-blue-600 p-4 px-2 text-center text-3xl text-white after:content-['_↗'] dark:bg-blue-500"
   >
-    <a href="/{item.name}" data-sveltekit-reload>
+    <a href={item.name} data-sveltekit-reload>
       {item.name}
     </a>
   </h3>
@@ -60,7 +60,7 @@
       target="_blank"
       rel="noopener noreferrer"
       data-sveltekit-reload
-      href="/{item.name}/quote"
+      href="{item.name}/quote"
     >
       <span class="mx-1 font-semibold"> Quote Count: </span>
       {item.quoteCount}
