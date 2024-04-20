@@ -118,7 +118,10 @@
     button="Error"
   />
 {/await}
-<div class:hidden={!copied} class="mx-auto mt-5 max-w-fit md:max-w-sm">
+<div
+  class:hidden={!copied}
+  class="relative bottom-[20rem] mx-auto mt-5 max-w-fit md:bottom-[30rem] md:max-w-sm"
+>
   <Info text={'Copying'} />
 </div>
 <div class:hidden={!saving} class="mx-auto mt-5 max-w-fit md:max-w-sm">

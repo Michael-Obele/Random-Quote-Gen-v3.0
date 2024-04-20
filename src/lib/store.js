@@ -123,3 +123,5 @@ export const dynamicColor = writable(darkTextColors[2]);
 export let counter = writable(0);
 
 export let searchContent = writable([]);
+
+
