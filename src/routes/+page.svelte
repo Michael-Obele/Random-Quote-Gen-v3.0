@@ -124,7 +124,10 @@
 >
   <Info text={'Copying'} />
 </div>
-<div class:hidden={!saving} class="mx-auto mt-5 max-w-fit md:max-w-sm">
+<div
+  class:hidden={!saving}
+  class="relative bottom-[20rem] mx-auto mt-5 max-w-fit md:bottom-[30rem] md:max-w-sm"
+>
   <Info>
     <span class="font-medium">Please Wait!</span> Quote is Saving!
   </Info>

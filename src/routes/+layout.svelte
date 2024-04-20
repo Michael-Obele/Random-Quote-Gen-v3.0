@@ -13,12 +13,11 @@
 
 <div class="dark">
   <div
-    id="main"
     style={`background: linear-gradient( 51deg,
       rgba(3 ,7, 18, 1) 22%,
       ${$dynamicColor} 73%,
       rgba(3 ,7, 18, 1) 100%);`}
-    class="relative max-h-fit min-h-screen bg-slate-500 pt-[10rem] align-middle dark:bg-gray-950 dark:text-white"
+    class="relative max-h-fit min-h-screen bg-slate-500 pt-[10rem] align-middle transition delay-150 ease-linear dark:bg-gray-950 dark:text-white"
   >
     <Navbar />
     <div class="container mx-auto min-h-screen pb-52">
