@@ -24,7 +24,7 @@ We welcome your contributions! Open an issue or submit a pull request to share y
 ## Acknowledgements:
 
 * **SvelteKit:** [https://svelte.dev/](https://svelte.dev/) (framework)
-* **Quotable API:** [https://api.quotable.io](https://api.quotable.io)
+* **Quotable API:** [quotable github](https://github.com/lukePeavey/quotable)
 
 
 ## Contact:
