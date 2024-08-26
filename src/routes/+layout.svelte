@@ -1,13 +1,25 @@
 <script>
-  import Footer from '$lib/Footer.svelte';
-  import Navbar from '$lib/components/Navbar.svelte';
-  import { dynamicColor } from '$lib/store';
-  import { ModeWatcher } from 'mode-watcher';
+  import Footer from "$lib/Footer.svelte";
+  import Navbar from "$lib/components/Navbar.svelte";
+  import { dynamicColor } from "$lib/store";
+  import { ModeWatcher } from "mode-watcher";
+  import { Toaster } from "$lib/components/ui/sonner";
 </script>
 
 <svelte:head>
-  <title>Random Quote</title>
+  <title>Random Quote Generator</title>
+  <meta
+    name="description"
+    content="Generate random, inspiring quotes with this simple web app."
+  />
+  <meta
+    name="keywords"
+    content="random quote, quote generator, inspiration, motivation"
+  />
 </svelte:head>
+
+<Toaster />
+<ModeWatcher />
 
 <div class="dark">
   <div
@@ -19,7 +31,6 @@
   >
     <Navbar />
     <div class="container mx-auto min-h-screen pb-52">
-      <ModeWatcher />
       <slot />
     </div>
     <Footer />
