@@ -33,12 +33,13 @@
   "dependencies": {
     "@prisma/client": "^5.12.1",
     "bcryptjs": "^2.4.3",
-    "bits-ui": "^0.21.2",
-    "clsx": "^2.1.0",
+    "bits-ui": "^0.21.13",
+    "clsx": "^2.1.1",
     "dom-to-image": "^2.6.0",
-    "lucide-svelte": "^0.364.0",
-    "mode-watcher": "^0.3.0",
-    "tailwind-merge": "^2.2.2",
+    "lucide-svelte": "^0.436.0",
+    "mode-watcher": "^0.4.1",
+    "svelte-sonner": "^0.3.27",
+    "tailwind-merge": "^2.5.2",
     "tailwind-variants": "^0.2.1"
   }
 }
